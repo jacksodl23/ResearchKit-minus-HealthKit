@@ -43,7 +43,7 @@
 @interface ORKHealthClinicalTypeRecorder () {
     ORKDataLogger *_logger;
     BOOL _isRecording;
-    HKHealthStore *_healthStore;
+    // HKHealthStore *_healthStore;
     ORKStep *_step;
 }
 
@@ -51,7 +51,7 @@
 
 @implementation ORKHealthClinicalTypeRecorder
 
-- (instancetype)initWithIdentifier:(NSString *)identifier
+/* - (instancetype)initWithIdentifier:(NSString *)identifier
                 healthClinicalType:(HKClinicalType *)healthClinicalType
             healthFHIRResourceType:(nullable HKFHIRResourceType)healthFHIRResourceType
                               step:(ORKStep *)step
@@ -68,6 +68,7 @@
     }
     return self;
 }
+*/
 
 - (void)dealloc {
     [_logger finishCurrentLog];
@@ -85,6 +86,7 @@
         }
     }
     
+    /*
     if (![HKHealthStore isHealthDataAvailable]) {
         [self finishRecordingWithError:[NSError errorWithDomain:NSCocoaErrorDomain
                                                            code:NSFeatureUnsupportedError
@@ -95,7 +97,9 @@
     if (!_healthStore) {
         _healthStore = [HKHealthStore new];
     }
+     */
     
+    /*
     HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:_healthClinicalType
                                                            predicate:_healthFHIRResourceType ? [HKQuery predicateForClinicalRecordsWithFHIRResourceType:_healthFHIRResourceType] : nil limit:HKObjectQueryNoLimit
                                                      sortDescriptors:nil
@@ -115,14 +119,15 @@
                                                               }
                                                           }];
                                                       }];
+     */
     
     _isRecording = YES;
-    [_healthStore executeQuery:query];
+    // [_healthStore executeQuery:query];
 }
 
-- (NSString *)recorderType {
+/* - (NSString *)recorderType {
     return _healthClinicalType.identifier;
-}
+} */
 
 - (void)stop {
     if (!_isRecording) {
@@ -171,15 +176,16 @@
 @end
 
 
-@implementation ORKHealthClinicalTypeRecorderConfiguration
+// @implementation ORKHealthClinicalTypeRecorderConfiguration
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-designated-initializers"
-- (instancetype)initWithIdentifier:(NSString *)identifier {
+/* - (instancetype)initWithIdentifier:(NSString *)identifier {
     @throw [NSException exceptionWithName:NSGenericException reason:@"Use subclass designated initializer" userInfo:nil];
 }
+ */
 
-- (instancetype)initWithIdentifier:(NSString *)identifier
+/* - (instancetype)initWithIdentifier:(NSString *)identifier
                 healthClinicalType:(HKClinicalType *)healthClinicalType
             healthFHIRResourceType:(nullable HKFHIRResourceType)healthFHIRResourceType {
     self = [super initWithIdentifier:identifier];
@@ -190,9 +196,10 @@
     }
     return self;
 }
+ */
 #pragma clang diagnostic pop
 
-- (ORKRecorder *)recorderForStep:(ORKStep *)step
+/* - (ORKRecorder *)recorderForStep:(ORKStep *)step
                  outputDirectory:(NSURL *)outputDirectory {
     return [[ORKHealthClinicalTypeRecorder alloc] initWithIdentifier:self.identifier
                                                   healthClinicalType:_healthClinicalType
@@ -200,7 +207,9 @@
                                                                 step:step
                                                      outputDirectory:outputDirectory];
 }
+ */
 
+/*
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -233,4 +242,5 @@
 }
 
 @end
+ */
 #endif

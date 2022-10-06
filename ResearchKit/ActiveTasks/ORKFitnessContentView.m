@@ -37,8 +37,8 @@
 #import "ORKHelpers_Internal.h"
 #import "ORKSkin.h"
 
-@import CoreMotion;
-@import HealthKit;
+// @import CoreMotion;
+// @import HealthKit;
 
 
 // #define LAYOUT_TEST 1
@@ -108,7 +108,7 @@
         _quantityPairView.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.2];
 #endif
       
-        [self setDistanceInMeters:0];
+        // [self setDistanceInMeters:0];
         [self heartRateView].title = ORKLocalizedString(@"FITNESS_HEARTRATE_TITLE", nil);
 
         [self addSubview:_quantityPairView];
@@ -135,7 +135,7 @@
 
 - (void)localeDidChange:(NSNotification *)notification {
     [self updateLengthFormatter];
-    [self setDistanceInMeters:_distanceInMeters];
+    // [self setDistanceInMeters:_distanceInMeters];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
@@ -290,6 +290,7 @@
     [_quantityPairView setKeylineHidden:!(_hasDistance && _hasHeartRate)];
 }
 
+/*
 - (void)setDistanceInMeters:(double)distanceInMeters {
     _distanceInMeters = distanceInMeters;
     double displayDistance = _distanceInMeters;
@@ -322,6 +323,7 @@
     [self distanceView].title = [NSString localizedStringWithFormat:ORKLocalizedString(@"FITNESS_DISTANCE_TITLE_FORMAT", nil), unitString];
     [self distanceView].value = distanceString;
 }
+ */
 
 - (void)setTimeLeft:(NSTimeInterval)timeLeft {
     _timeLeft = timeLeft;

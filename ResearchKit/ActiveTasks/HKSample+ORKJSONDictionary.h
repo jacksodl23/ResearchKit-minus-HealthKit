@@ -29,9 +29,10 @@
  */
 
 
-@import HealthKit;
+// @import HealthKit;
 
 
+/*
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_OPTIONS(NSInteger, ORKSampleJSONOptions) {
@@ -39,24 +40,25 @@ typedef NS_OPTIONS(NSInteger, ORKSampleJSONOptions) {
     ORKSampleIncludeSource = 0x2,
     ORKSampleIncludeUUID = 0x4
 };
+ */
 
 /**
  JSON serialization aid for HKSample.
  */
-@interface HKSample (ORKJSONDictionary)
+// @interface HKSample (ORKJSONDictionary)
 
-- (NSDictionary *)ork_JSONDictionaryWithOptions:(ORKSampleJSONOptions)options unit:(nullable HKUnit *)unit;
+// - (NSDictionary *)ork_JSONDictionaryWithOptions:(ORKSampleJSONOptions)options unit:(nullable HKUnit *)unit;
 
-@end
+// @end
 
 
 /**
  JSON serialization aid for HKCorrelation.
  */
-@interface HKCorrelation (ORKJSONDictionary)
+// @interface HKCorrelation (ORKJSONDictionary)
 
-- (NSDictionary *)ork_JSONDictionaryWithOptions:(ORKSampleJSONOptions)options sampleTypes:(NSArray *)sampleTypes units:(NSArray *)units;
+// - (NSDictionary *)ork_JSONDictionaryWithOptions:(ORKSampleJSONOptions)options sampleTypes:(NSArray *)sampleTypes units:(NSArray *)units;
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END

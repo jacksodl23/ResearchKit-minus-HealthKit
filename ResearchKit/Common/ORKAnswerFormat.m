@@ -44,7 +44,7 @@
 
 #import "ORKHelpers_Internal.h"
 
-@import HealthKit;
+// @import HealthKit;
 @import MapKit;
 @import Contacts;
 
