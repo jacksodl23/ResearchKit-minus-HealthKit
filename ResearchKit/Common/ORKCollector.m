@@ -115,6 +115,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
 
 @implementation ORKHealthCollector : ORKCollector
 
+/*
 - (instancetype)initWithSampleType:(HKSampleType*)sampleType unit:(HKUnit*)unit startDate:(NSDate*)startDate {
     NSString *itemIdentifier = [NSString stringWithFormat:ItemIdentifierFormatWithTwoPlaceholders, sampleType.identifier, unit.unitString];
     self = [super initWithIdentifier:itemIdentifier];
@@ -125,6 +126,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     }
     return self;
 }
+ */
 
 + (BOOL)supportsSecureCoding {
     return YES;
@@ -133,10 +135,10 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        ORK_DECODE_OBJ_CLASS(aDecoder, sampleType, HKSampleType);
-        ORK_DECODE_OBJ_CLASS(aDecoder, unit, HKUnit);
-        ORK_DECODE_OBJ_CLASS(aDecoder, startDate, NSDate);
-        ORK_DECODE_OBJ_CLASS(aDecoder, lastAnchor, HKQueryAnchor);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, sampleType, HKSampleType);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, unit, HKUnit);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, startDate, NSDate);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, lastAnchor, HKQueryAnchor);
     }
     return self;
 }
@@ -144,13 +146,13 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
     
-    ORK_ENCODE_OBJ(aCoder, sampleType);
-    ORK_ENCODE_OBJ(aCoder, unit);
-    ORK_ENCODE_OBJ(aCoder, startDate);
-    ORK_ENCODE_OBJ(aCoder, lastAnchor);
+    // ORK_ENCODE_OBJ(aCoder, sampleType);
+    // ORK_ENCODE_OBJ(aCoder, unit);
+    // ORK_ENCODE_OBJ(aCoder, startDate);
+    // ORK_ENCODE_OBJ(aCoder, lastAnchor);
 }
 
-- (NSArray *)serializableObjectsForObjects:(NSArray<HKSample *> *)objects {
+/* - (NSArray *)serializableObjectsForObjects:(NSArray<HKSample *> *)objects {
     NSMutableArray *elements = [NSMutableArray arrayWithCapacity:[objects count]];
     for (HKSample *sample in objects) {
         [elements addObject:[sample ork_JSONDictionaryWithOptions:(ORKSampleJSONOptions)(ORKSampleIncludeMetadata|ORKSampleIncludeSource|ORKSampleIncludeUUID) unit:self.unit]];
@@ -158,7 +160,9 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     
     return elements;
 }
+ */
 
+/*
 - (ORKOperation*)collectionOperationWithManager:(ORKDataCollectionManager*)mananger {
     if (! [HKHealthStore isHealthDataAvailable]) {
         return nil;
@@ -170,34 +174,35 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
 - (NSArray *)collectableSampleTypes {
     return @[_sampleType];
 }
-
-- (instancetype)copyWithZone:(NSZone *)zone {
+*/
+ 
+/* - (instancetype)copyWithZone:(NSZone *)zone {
     ORKHealthCollector *collector = [super copyWithZone:zone];
     collector->_startDate = self.startDate;
-    collector->_sampleType = self.sampleType;
-    collector->_unit = [self.unit copy];
-    collector->_lastAnchor = self.lastAnchor;
+    // collector->_sampleType = self.sampleType;
+    // collector->_unit = [self.unit copy];
+    // collector->_lastAnchor = self.lastAnchor;
     
     return collector;
-}
+} */
 
-- (BOOL)isEqual:(id)object {
+/* - (BOOL)isEqual:(id)object {
     BOOL isParentSame = [super isEqual:object];
     
     __typeof(self) castObject = object;
     return (isParentSame &&
-            ORKEqualObjects(_sampleType, castObject.sampleType) &&
-            ORKEqualObjects(_unit, castObject.unit) &&
-            ORKEqualObjects(_startDate, castObject.startDate) &&
-            ORKEqualObjects(_lastAnchor, castObject.lastAnchor));
-}
+            // ORKEqualObjects(_sampleType, castObject.sampleType) &&
+            // ORKEqualObjects(_unit, castObject.unit) &&
+            // ORKEqualObjects(_startDate, castObject.startDate) &&
+            // ORKEqualObjects(_lastAnchor, castObject.lastAnchor));
+} */
 
 @end
 
 
 @implementation ORKHealthCorrelationCollector : ORKCollector
 
-- (instancetype)initWithCorrelationType:(HKCorrelationType *)correlationType
+/* - (instancetype)initWithCorrelationType:(HKCorrelationType *)correlationType
                             sampleTypes:(NSArray *)sampleTypes
                                   units:(NSArray<HKUnit *> *)units
                               startDate:(NSDate *)startDate {
@@ -211,6 +216,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     }
     return self;
 }
+ */
 
 + (BOOL)supportsSecureCoding {
     return YES;
@@ -219,35 +225,36 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        ORK_DECODE_OBJ_CLASS(aDecoder, correlationType, HKCorrelationType);
-        ORK_DECODE_OBJ_ARRAY(aDecoder, sampleTypes, HKSampleType);
-        ORK_DECODE_OBJ_ARRAY(aDecoder, units, HKUnit);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, correlationType, HKCorrelationType);
+        // ORK_DECODE_OBJ_ARRAY(aDecoder, sampleTypes, HKSampleType);
+        // ORK_DECODE_OBJ_ARRAY(aDecoder, units, HKUnit);
         ORK_DECODE_OBJ_CLASS(aDecoder, startDate, NSDate);
-        ORK_DECODE_OBJ_CLASS(aDecoder, lastAnchor, HKQueryAnchor);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, lastAnchor, HKQueryAnchor);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
-    ORK_ENCODE_OBJ(aCoder, correlationType);
-    ORK_ENCODE_OBJ(aCoder, sampleTypes);
-    ORK_ENCODE_OBJ(aCoder, units);
+    // ORK_ENCODE_OBJ(aCoder, correlationType);
+    // ORK_ENCODE_OBJ(aCoder, sampleTypes);
+    // ORK_ENCODE_OBJ(aCoder, units);
     ORK_ENCODE_OBJ(aCoder, startDate);
-    ORK_ENCODE_OBJ(aCoder, lastAnchor);
+    // ORK_ENCODE_OBJ(aCoder, lastAnchor);
 }
 
+/*
 - (HKSampleType *)sampleType {
     return _correlationType;
 }
+*/
 
-
-- (NSArray *)collectableSampleTypes {
+/* - (NSArray *)collectableSampleTypes {
     return self.sampleTypes;
-}
+} */
 
 
-- (NSArray *)serializableObjectsForObjects:(NSArray<HKCorrelation *> *)objects {
+/* - (NSArray *)serializableObjectsForObjects:(NSArray<HKCorrelation *> *)objects {
     NSMutableArray *elements = [NSMutableArray arrayWithCapacity:[objects count]];
     for (HKCorrelation *correlation in objects) {
         [elements addObject:[correlation ork_JSONDictionaryWithOptions:(ORKSampleJSONOptions)(ORKSampleIncludeMetadata|ORKSampleIncludeSource|ORKSampleIncludeUUID) sampleTypes:self.sampleTypes units:self.units]];
@@ -255,22 +262,23 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     
     return elements;
 }
+ */
 
-- (ORKOperation *)collectionOperationWithManager:(ORKDataCollectionManager *)manager {
+/* - (ORKOperation *)collectionOperationWithManager:(ORKDataCollectionManager *)manager {
     if (! [HKHealthStore isHealthDataAvailable]) {
         return nil;
     }
     
     return [[ORKHealthSampleQueryOperation alloc] initWithCollector:self mananger:manager];
-}
+} */
 
 - (instancetype)copyWithZone:(NSZone *)zone {
     ORKHealthCorrelationCollector *collector = [super copyWithZone:zone];
     collector->_startDate = self.startDate;
-    collector->_correlationType = self.correlationType;
-    collector->_sampleTypes = [self.sampleTypes copy];
-    collector->_units = [self.units copy];
-    collector->_lastAnchor = self.lastAnchor;
+    // collector->_correlationType = self.correlationType;
+    // collector->_sampleTypes = [self.sampleTypes copy];
+    // collector->_units = [self.units copy];
+    // collector->_lastAnchor = self.lastAnchor;
     
     return collector;
 }
@@ -280,11 +288,11 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     
     __typeof(self) castObject = object;
     return (isParentSame &&
-            ORKEqualObjects(_correlationType, castObject.correlationType) &&
-            ORKEqualObjects(_sampleTypes, castObject.sampleTypes) &&
-            ORKEqualObjects(_units, castObject.units) &&
-            ORKEqualObjects(_startDate, castObject.startDate) &&
-            ORKEqualObjects(_lastAnchor, castObject.lastAnchor));
+            // ORKEqualObjects(_correlationType, castObject.correlationType) &&
+            // ORKEqualObjects(_sampleTypes, castObject.sampleTypes) &&
+            // ORKEqualObjects(_units, castObject.units) &&
+            // ORKEqualObjects(_startDate, castObject.startDate) &&
+            // ORKEqualObjects(_lastAnchor, castObject.lastAnchor));
 }
 
 @end
@@ -320,7 +328,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     ORK_ENCODE_OBJ(aCoder, lastDate);
 }
 
-- (NSArray *)serializableObjectsForObjects:(NSArray<CMMotionActivity *> *)objects {
+/* - (NSArray *)serializableObjectsForObjects:(NSArray<CMMotionActivity *> *)objects {
     // Expect an array of CMMotionActivity objects
     NSMutableArray *elements = [NSMutableArray arrayWithCapacity:[objects count]];
     for (CMMotionActivity *activity in objects) {
@@ -328,8 +336,9 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     }
     
     return elements;
-}
+} */
 
+/*
 - (ORKOperation *)collectionOperationWithManager:(ORKDataCollectionManager *)mananger {
     if (! [CMMotionActivityManager isActivityAvailable]) {
         return nil;
@@ -337,6 +346,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     
     return [[ORKMotionActivityQueryOperation alloc] initWithCollector:self queryQueue:nil manager:mananger];
 }
+ */
 
 - (instancetype)copyWithZone:(NSZone *)zone {
     ORKMotionActivityCollector *collector = [super copyWithZone:zone];

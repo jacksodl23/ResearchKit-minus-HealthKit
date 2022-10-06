@@ -103,7 +103,7 @@
         _currentDate = lastDate;
     }
 
-    __weak ORKMotionActivityQueryOperation * weakSelf = self;
+    // __weak ORKMotionActivityQueryOperation * weakSelf = self;
     
     NSDate *queryBeginDate = _currentDate?:startDate;
     NSDate *queryEndDate = [NSDate date];
@@ -114,11 +114,11 @@
     ORK_Log_Debug("\nMotion Query: %@\n", @{@"from": queryBeginDate, @"to":queryEndDate});
     
     // Run a single query up to current date
-    [_manager.activityManager queryActivityStartingFromDate:queryBeginDate toDate:queryEndDate toQueue:_queue withHandler:^(NSArray<CMMotionActivity *> *activities, NSError *error) {
+    /* [_manager.activityManager queryActivityStartingFromDate:queryBeginDate toDate:queryEndDate toQueue:_queue withHandler:^(NSArray<CMMotionActivity *> *activities, NSError *error) {
         ORKMotionActivityQueryOperation *op = weakSelf;
         ORK_Log_Debug("\nMotion Query: %@\n", @{@"from": queryBeginDate, @"to":queryEndDate, @"returned count": @(activities.count)});
         [op handleResults:activities queryBegin:queryBeginDate queryEnd:queryEndDate error:error itemIdentifier:itemIdentifier];
-    }];
+    }]; */
     
     [self.lock unlock];
     
@@ -127,7 +127,7 @@
 /*
  Handles the results, and starts a new query if needed
  */
-- (void)handleResults:(NSArray<CMMotionActivity *> *)results
+/* - (void)handleResults:(NSArray<CMMotionActivity *> *)results
           queryBegin:(NSDate *)queryBegin
             queryEnd:(NSDate *)queryEnd
                error:(NSError *)error
@@ -202,5 +202,6 @@
     
     [self safeFinish];
 }
+ */
 
 @end

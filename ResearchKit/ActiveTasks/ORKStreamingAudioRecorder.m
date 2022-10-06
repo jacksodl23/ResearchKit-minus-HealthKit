@@ -47,11 +47,11 @@
 
 - (void)dealloc {
     ORK_Log_Debug("Remove audiorecorder %p", self);
-    if ([_audioEngine isRunning]) {
+    /* if ([_audioEngine isRunning]) {
         [_audioEngine stop];
         [[_audioEngine inputNode] removeTapOnBus:0];
     }
-    _audioEngine = nil;
+    _audioEngine = nil; */
 }
 
 - (instancetype)initWithIdentifier:(NSString *)identifier
@@ -66,13 +66,13 @@
 }
 
 - (void)restoreSavedAudioSessionCategory {
-    if (_savedSessionCategory) {
+    /* if (_savedSessionCategory) {
         NSError *error;
         if (![[AVAudioSession sharedInstance] setCategory:_savedSessionCategory error:&error]) {
             ORK_Log_Error("Failed to restore the audio session category: %@", [error localizedDescription]);
         }
         _savedSessionCategory = nil;
-    }
+    } */
 }
 
 - (NSURL *)recordingFileURL {
@@ -109,7 +109,7 @@
     if (self.outputDirectory == nil) {
         @throw [NSException exceptionWithName:NSDestinationInvalidException reason:@"StreamingAudioRecorder requires an output directory" userInfo:nil];
     }
-    if (!_audioEngine)
+    /* if (!_audioEngine)
     {
         NSError *error = nil;
         
@@ -178,18 +178,18 @@
             [self finishRecordingWithError:error];
             return;
         }
-    }
+    } */
     
     [super start];
     
 }
 
 - (void)stop {
-    if (!_audioEngine) {
+    /* if (!_audioEngine) {
         // Error has already been returned.
         return;
     }
-    [self doStopRecording];
+    [self doStopRecording]; */
     
     NSURL *fileUrl = [self recordingFileURL];
     if (![[NSFileManager defaultManager] fileExistsAtPath:[[self recordingFileURL] path]]) {
@@ -200,15 +200,15 @@
     [super stop];
 }
 
-- (BOOL)isRecording {
+/* - (BOOL)isRecording {
     return [_audioEngine isRunning];
-}
+} */
 
 - (NSString *)recorderType {
     return @"streamingAudio";
 }
 
-- (void)doStopRecording {
+/* - (void)doStopRecording {
     if (self.isRecording) {
         if ([_audioEngine isRunning]) {
             [_audioEngine stop];
@@ -220,20 +220,20 @@
 #endif
         [self restoreSavedAudioSessionCategory];
     }
-}
+} */
 
 - (void)finishRecordingWithError:(NSError *)error {
-    [self doStopRecording];
+    // [self doStopRecording];
     
     [super finishRecordingWithError:error];
 }
 
 - (void)reset {
-    if ([_audioEngine isRunning]) {
+    /* if ([_audioEngine isRunning]) {
         [_audioEngine stop];
         [[_audioEngine inputNode] removeTapOnBus:0];
     }
-    _audioEngine = nil;
+    _audioEngine = nil; */
     [super reset];
 }
 

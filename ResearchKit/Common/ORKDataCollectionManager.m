@@ -44,9 +44,9 @@ static  NSString *const ORKDataCollectionPersistenceFileNamev2 = @".dataCollecti
     NSOperationQueue *_operationQueue;
     NSString * _Nonnull _managedDirectory;
     NSArray<ORKCollector *> *_collectors;
-    HKHealthStore *_healthStore;
-    CMMotionActivityManager *_activityManager;
-    NSMutableArray<HKObserverQueryCompletionHandler> *_completionHandlers;
+    // HKHealthStore *_healthStore;
+    // CMMotionActivityManager *_activityManager;
+    // NSMutableArray<HKObserverQueryCompletionHandler> *_completionHandlers;
 }
 
 - (instancetype)initWithPersistenceDirectoryURL:(NSURL *)directoryURL {
@@ -118,19 +118,19 @@ static inline void dispatch_sync_if_not_on_queue(dispatch_queue_t queue, dispatc
     });
 }
 
-- (HKHealthStore *)healthStore {
+/* - (HKHealthStore *)healthStore {
     if (!_healthStore && [HKHealthStore isHealthDataAvailable]){
         _healthStore = [[HKHealthStore alloc] init];
     }
     return _healthStore;
-}
+} */
 
-- (CMMotionActivityManager *)activityManager {
+/* - (CMMotionActivityManager *)activityManager {
     if (!_activityManager && [CMMotionActivityManager isActivityAvailable]) {
         _activityManager = [[CMMotionActivityManager alloc] init];
     }
     return _activityManager;
-}
+} */
 
 - (NSArray<ORKCollector *> *)collectors {
     if (_collectors == nil) {
@@ -182,7 +182,7 @@ static inline void dispatch_sync_if_not_on_queue(dispatch_queue_t queue, dispatc
     _collectors = [collectors copy];
 }
 
-- (ORKHealthCollector *)addHealthCollectorWithSampleType:(HKSampleType*)sampleType unit:(HKUnit *)unit startDate:(NSDate *)startDate error:(NSError**)error {
+/* - (ORKHealthCollector *)addHealthCollectorWithSampleType:(HKSampleType*)sampleType unit:(HKUnit *)unit startDate:(NSDate *)startDate error:(NSError**)error {
     
     if (!sampleType) {
         @throw [NSException exceptionWithName:ORKInvalidArgumentException reason:@"sampleType cannot be nil" userInfo:nil];
@@ -203,9 +203,9 @@ static inline void dispatch_sync_if_not_on_queue(dispatch_queue_t queue, dispatc
     }];
     
     return healthCollector;
-}
+} */
 
-- (ORKHealthCorrelationCollector *)addHealthCorrelationCollectorWithCorrelationType:(HKCorrelationType *)correlationType
+/* - (ORKHealthCorrelationCollector *)addHealthCorrelationCollectorWithCorrelationType:(HKCorrelationType *)correlationType
                                                                         sampleTypes:(NSArray<HKSampleType *> *)sampleTypes
                                                                               units:(NSArray<HKUnit *> *)units
                                                                           startDate:(NSDate *)startDate
@@ -233,7 +233,7 @@ static inline void dispatch_sync_if_not_on_queue(dispatch_queue_t queue, dispatc
     }];
     
     return healthCorrelationCollector;
-}
+} */
 
 - (ORKMotionActivityCollector *)addMotionActivityCollectorWithStartDate:(NSDate *)startDate
                                                                   error:(NSError* __autoreleasing *)error {
@@ -335,10 +335,10 @@ static inline void dispatch_sync_if_not_on_queue(dispatch_queue_t queue, dispatc
                     [_delegate dataCollectionManagerDidCompleteCollection:self];
                 }
                 
-                for (HKObserverQueryCompletionHandler handler in _completionHandlers) {
+                /* for (HKObserverQueryCompletionHandler handler in _completionHandlers) {
                     handler();
                 }
-                [_completionHandlers removeAllObjects];
+                [_completionHandlers removeAllObjects]; */
                 
                 return NO;
             }];

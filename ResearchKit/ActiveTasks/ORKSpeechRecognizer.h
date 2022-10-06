@@ -38,29 +38,29 @@
 /**
  Tells the delegate when the recognition of requested utterance is finished.
  */
-- (void)didFinishRecognitionWithError:(NSError *)error;
+// - (void)didFinishRecognitionWithError:(NSError *)error;
 
 /**
  Tells the delegate that a hypothesized transcription is available.
  */
-- (void)didHypothesizeTranscription:(SFTranscription *)transcription;
+// - (void)didHypothesizeTranscription:(SFTranscription *)transcription;
 
 /**
  Tells the delegate when the availability of the speech recognizer has changed
  */
-- (void)availabilityDidChange:(BOOL)available;
+// - (void)availabilityDidChange:(BOOL)available;
 
 @end
 
 /**
  The `ORKSpeechRecognizer` class is a wrapper for the Speech API framework
  */
-@interface ORKSpeechRecognizer: NSObject
+// @interface ORKSpeechRecognizer: NSObject
 
 /**
  Asks the user to grant your app permission to perform speech recognition.
  */
-+ (void)requestAuthorization;
+// + (void)requestAuthorization;
 
 /**
  Starts speech recognition for the specified locale
@@ -71,19 +71,19 @@
  @param handler A handler to report errors
 
  */
-- (void)startRecognitionWithLocale:(NSLocale *)locale reportPartialResults:(BOOL)reportPartialResults responseDelegate:(id<ORKSpeechRecognitionDelegate>)delegate errorHandler:(void (^)(NSError *error))handler;
+// - (void)startRecognitionWithLocale:(NSLocale *)locale reportPartialResults:(BOOL)reportPartialResults responseDelegate:(id<ORKSpeechRecognitionDelegate>)delegate errorHandler:(void (^)(NSError *error))handler;
 
 /**
  Appends audio to the end of the recognition request.
  
  @param audioBuffer A buffer of audio
  */
-- (void)addAudio:(AVAudioPCMBuffer *)audioBuffer;
+// - (void)addAudio:(AVAudioPCMBuffer *)audioBuffer;
 
 /**
  Indicates that the audio source is finished and no more audio will be appended to the
  recognition request.
  */
-- (void)endAudio;
+// - (void)endAudio;
 
-@end
+// @end

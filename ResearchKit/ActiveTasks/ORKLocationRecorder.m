@@ -40,13 +40,13 @@
 // #import <CoreLocation/CoreLocation.h>
 
 
-@interface ORKLocationRecorder () <CLLocationManagerDelegate> {
+@interface ORKLocationRecorder () /* <CLLocationManagerDelegate> */ {
     ORKDataLogger *_logger;
     NSError *_recordingError;
     BOOL _started;
 }
 
-@property (nonatomic, strong, nullable) CLLocationManager *locationManager;
+// @property (nonatomic, strong, nullable) CLLocationManager *locationManager;
 
 @property (nonatomic) NSTimeInterval uptime;
 
@@ -71,9 +71,9 @@
     return @"location";
 }
 
-- (CLLocationManager *)createLocationManager {
+/* - (CLLocationManager *)createLocationManager {
     return [[CLLocationManager alloc] init];
-}
+} */
 
 - (void)start {
     [super start];
@@ -87,7 +87,7 @@
         }
     }
     
-    self.locationManager = [self createLocationManager];
+    /* self.locationManager = [self createLocationManager];
     
     CLAuthorizationStatus status = kCLAuthorizationStatusNotDetermined;
     
@@ -112,17 +112,17 @@
     }
     
     self.uptime = [NSProcessInfo processInfo].systemUptime;
-    [self.locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingLocation]; */
 }
 
-- (void)doStopRecording {
+/* - (void)doStopRecording {
     [self.locationManager stopUpdatingLocation];
     self.locationManager.delegate = nil;
     self.locationManager = nil;
-}
+} */
 
 - (void)stop {
-    [self doStopRecording];
+    // [self doStopRecording];
     [_logger finishCurrentLog];
     
     NSError *error = _recordingError;
@@ -137,7 +137,7 @@
     [super stop];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
+/* - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     BOOL success = YES;
     NSParameterAssert(locations.count >= 0);
@@ -157,14 +157,14 @@
             [self stop];
         });
     }
-}
+} */
 
 - (void)finishRecordingWithError:(NSError *)error {
-    [self doStopRecording];
+    // [self doStopRecording];
     [super finishRecordingWithError:nil];
 }
 
-- (BOOL)isRecording {
+/* - (BOOL)isRecording {
     CLAuthorizationStatus status = kCLAuthorizationStatusNotDetermined;
     
     if (@available(iOS 14.0, *)) {
@@ -174,7 +174,7 @@
     }
     
     return [CLLocationManager locationServicesEnabled] && (self.locationManager != nil) && (status > kCLAuthorizationStatusDenied);
-}
+} */
 
 - (void)reset {
     [super reset];

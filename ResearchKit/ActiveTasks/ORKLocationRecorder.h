@@ -64,7 +64,7 @@ ORK_CLASS_AVAILABLE
 /**
  The location manager, if any, being used by this recorder.
  */
-@property (nonatomic, strong, nullable, readonly) CLLocationManager *locationManager;
+// @property (nonatomic, strong, nullable, readonly) CLLocationManager *locationManager;
 
 @end
 

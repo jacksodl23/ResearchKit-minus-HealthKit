@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
  If NO is returned or this method is not implemented, the manager will stop the collection for the collector and repeat this same collection next time,
  until the data is accepted.
  */
-- (BOOL)motionActivityCollector:(ORKMotionActivityCollector *)collector didCollectMotionActivities:(NSArray<CMMotionActivity *> *)motionActivities;
+// - (BOOL)motionActivityCollector:(ORKMotionActivityCollector *)collector didCollectMotionActivities:(NSArray<CMMotionActivity *> *)motionActivities;
 
 /**
  Indicating the collection is completed for all the collectors.

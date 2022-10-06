@@ -138,6 +138,7 @@ static const NSTimeInterval OutcomeAnimationDuration = 0.3;
 
 #pragma mark - ORKDeviceMotionRecorderDelegate
 
+/*
 - (void)deviceMotionRecorderDidUpdateWithMotion:(CMDeviceMotion *)motion {
     CMAcceleration v = motion.userAcceleration;
     double vectorMagnitude = sqrt(((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
@@ -145,6 +146,7 @@ static const NSTimeInterval OutcomeAnimationDuration = 0.3;
         [self stopRecorders];
     }
 }
+ */
 
 #pragma mark - ORKReactionTimeStepViewController
 

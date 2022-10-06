@@ -152,12 +152,12 @@ ORK_CLASS_AVAILABLE
 /**
  The geographical coordinate information.
  */
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+// @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 /**
  The region describes the size of the placemark of the location.
  */
-@property (nonatomic, copy, readonly, nullable) CLCircularRegion *region;
+// @property (nonatomic, copy, readonly, nullable) CLCircularRegion *region;
 
 /**
  The human readable address typed in by user.

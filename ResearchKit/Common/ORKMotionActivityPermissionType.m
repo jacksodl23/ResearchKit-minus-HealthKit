@@ -40,7 +40,7 @@ static const uint32_t IconLightTintColor = 0xEF72D8;
 static const uint32_t IconDarkTintColor = 0xEF6FD8;
 
 @interface ORKMotionActivityPermissionType()
-@property (nonatomic) CMMotionActivityManager *activityManager;
+// @property (nonatomic) CMMotionActivityManager *activityManager;
 @end
 
 @implementation ORKMotionActivityPermissionType
@@ -58,12 +58,12 @@ static const uint32_t IconDarkTintColor = 0xEF6FD8;
     return self;
 }
 
-- (CMMotionActivityManager *)activityManager {
+/* - (CMMotionActivityManager *)activityManager {
     if (!_activityManager) {
         _activityManager = [[CMMotionActivityManager alloc] init];
     }
     return _activityManager;
-}
+} */
 
 - (void)setupCardView {
 
@@ -89,10 +89,10 @@ static const uint32_t IconDarkTintColor = 0xEF6FD8;
         [self.cardView updateIconTintColor:ORKRGB(IconLightTintColor)];
     }
 
-    [self checkMotionAuthStatus];
+    // [self checkMotionAuthStatus];
 }
 
--(void)checkMotionAuthStatus {
+/* -(void)checkMotionAuthStatus {
     switch (CMMotionActivityManager.authorizationStatus) {
         case CMAuthorizationStatusNotDetermined:
             [self setState:ORKRequestPermissionsButtonStateDefault canContinue:NO];
@@ -104,15 +104,15 @@ static const uint32_t IconDarkTintColor = 0xEF6FD8;
             [self setState:ORKRequestPermissionsButtonStateConnected canContinue:YES];
             break;
     }
-}
+} */
 
 // There is no explicit API for requesting device motion permission.
 // It is requested automatically when you try read data for the first time.
 // This method tries to read data in order to trigger the permission dialogue.
 - (void)requestPermissionButtonPressed {
-    [self.activityManager startActivityUpdatesToQueue:[NSOperationQueue mainQueue]
+    /* [self.activityManager startActivityUpdatesToQueue:[NSOperationQueue mainQueue]
                                           withHandler:^(CMMotionActivity * _Nullable activity) {}];
-    [self.activityManager stopActivityUpdates];
+    [self.activityManager stopActivityUpdates]; */
     [self setState:ORKRequestPermissionsButtonStateConnected canContinue:YES];
 }
 
