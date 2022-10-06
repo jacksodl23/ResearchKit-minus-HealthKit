@@ -31,7 +31,7 @@
 
 #import "CMAccelerometerData+ORKJSONDictionary.h"
 
-
+/*
 @implementation CMAccelerometerData (ORKJSONDictionary)
 
 - (NSDictionary *)ork_JSONDictionary {
@@ -44,3 +44,4 @@
 }
 
 @end
+*/

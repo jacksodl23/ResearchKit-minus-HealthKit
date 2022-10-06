@@ -46,7 +46,7 @@ static uint32_t const IconTintColor = 0xFF5E5E;
     ORKThrowMethodUnavailableException();
 }
 
-- (instancetype)initWithSampleTypesToWrite:(NSSet<HKSampleType *> *)sampleTypesToWrite objectTypesToRead:(NSSet<HKObjectType *> *)objectTypesToRead {
+/* - (instancetype)initWithSampleTypesToWrite:(NSSet<HKSampleType *> *)sampleTypesToWrite objectTypesToRead:(NSSet<HKObjectType *> *)objectTypesToRead {
     self = [super init];
     
     if (self) {
@@ -57,7 +57,7 @@ static uint32_t const IconTintColor = 0xFF5E5E;
     }
     
     return self;
-}
+} */
 
 - (void)setupCardView {
     UIImage *image;
@@ -78,7 +78,7 @@ static uint32_t const IconTintColor = 0xFF5E5E;
 }
 
 - (void)checkHealthKitAuthorizationStatus {
-    if (![HKHealthStore isHealthDataAvailable]) {
+    /* if (![HKHealthStore isHealthDataAvailable]) {
         [self setState:ORKRequestPermissionsButtonStateNotSupported canContinue:YES];
         return;
     }
@@ -107,11 +107,11 @@ static uint32_t const IconTintColor = 0xFF5E5E;
         }];
     } else {
         [self setState:ORKRequestPermissionsButtonStateDefault canContinue:NO];
-    }
+    } */
 }
 
 - (void)requestPermissionButtonPressed {
-    [[HKHealthStore new] requestAuthorizationToShareTypes:_sampleTypesToWrite readTypes:_objectTypesToRead completion:^(BOOL success, NSError * _Nullable error) {
+    /* [[HKHealthStore new] requestAuthorizationToShareTypes:_sampleTypesToWrite readTypes:_objectTypesToRead completion:^(BOOL success, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
 
             if (error) {
@@ -121,7 +121,7 @@ static uint32_t const IconTintColor = 0xFF5E5E;
 
             [self setState:ORKRequestPermissionsButtonStateConnected canContinue:YES];
         });
-    }];
+    }]; */
 }
 
 - (void)setState:(ORKRequestPermissionsButtonState)state canContinue:(BOOL)canContinue {
@@ -129,7 +129,7 @@ static uint32_t const IconTintColor = 0xFF5E5E;
     [self.cardView.requestPermissionButton setState:state];
 }
 
-- (BOOL)isEqual:(id)object {
+/* - (BOOL)isEqual:(id)object {
     if ([self class] != [object class]) {
         return NO;
     }
@@ -138,7 +138,7 @@ static uint32_t const IconTintColor = 0xFF5E5E;
     return
         ORKEqualObjects(self.objectTypesToRead, castObject.objectTypesToRead) &&
         ORKEqualObjects(self.sampleTypesToWrite, castObject.sampleTypesToWrite);
-}
+} */
 
 @end
 

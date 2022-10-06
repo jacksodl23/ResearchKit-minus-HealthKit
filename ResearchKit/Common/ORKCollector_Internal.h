@@ -46,11 +46,11 @@
 
 @protocol ORKHealthCollectable <NSObject>
 
-- (HKSampleType *)sampleType;
+/* - (HKSampleType *)sampleType;
 - (NSArray<HKSampleType *> *)collectableSampleTypes;
 - (NSDate *)startDate;
-// - (HKQueryAnchor *)lastAnchor;
-// - (void)setLastAnchor:(HKQueryAnchor *)lastAnchor;
+- (HKQueryAnchor *)lastAnchor;
+- (void)setLastAnchor:(HKQueryAnchor *)lastAnchor; */
 
 @end
 

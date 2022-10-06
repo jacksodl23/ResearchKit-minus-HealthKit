@@ -36,10 +36,10 @@
 
 @implementation ORKPermissionType
 
-+ (ORKHealthKitPermissionType *)healthKitPermissionTypeWithSampleTypesToWrite:(NSSet<HKSampleType *> *)sampleTypesToWrite objectTypesToRead:(NSSet<HKObjectType *> *)objectTypesToRead {
+/* + (ORKHealthKitPermissionType *)healthKitPermissionTypeWithSampleTypesToWrite:(NSSet<HKSampleType *> *)sampleTypesToWrite objectTypesToRead:(NSSet<HKObjectType *> *)objectTypesToRead {
     return [[ORKHealthKitPermissionType alloc] initWithSampleTypesToWrite:sampleTypesToWrite
                                                         objectTypesToRead:objectTypesToRead];
-}
+} */
 
 + (ORKNotificationPermissionType *)notificationPermissionType:(UNAuthorizationOptions)options {
     return [[ORKNotificationPermissionType alloc] initWithAuthorizationOptions:options];

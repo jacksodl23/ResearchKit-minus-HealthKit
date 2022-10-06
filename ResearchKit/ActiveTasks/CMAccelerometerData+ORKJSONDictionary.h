@@ -31,7 +31,7 @@
 
 // @import CoreMotion;
 
-
+/*
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CMAccelerometerData (ORKJSONDictionary)
@@ -41,3 +41,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+*/

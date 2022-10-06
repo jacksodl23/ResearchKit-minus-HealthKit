@@ -327,8 +327,8 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
         return;
     }
     
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    ORKWeakTypeOf(self) weakSelf = self;
+    // CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    // ORKWeakTypeOf(self) weakSelf = self;
     /* CLLocation *cllocation = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
     [geocoder reverseGeocodeLocation:cllocation completionHandler:^(NSArray *placemarks, NSError *error) {
         ORKStrongTypeOf(weakSelf) strongSelf = weakSelf;

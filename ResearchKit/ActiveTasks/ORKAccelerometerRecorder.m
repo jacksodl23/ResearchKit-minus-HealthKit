@@ -46,7 +46,7 @@
     NSError *_recordingError;
 }
 
-@property (nonatomic, strong) CMMotionManager *motionManager;
+// @property (nonatomic, strong) CMMotionManager *motionManager;
 
 @property (nonatomic) NSTimeInterval uptime;
 
@@ -80,14 +80,14 @@
     }
 }
 
-- (CMMotionManager *)createMotionManager {
+/* - (CMMotionManager *)createMotionManager {
     return [[CMMotionManager alloc] init];
-}
+} */
 
 - (void)start {
     [super start];
     
-    self.motionManager = [self createMotionManager];
+    // self.motionManager = [self createMotionManager];
     
     if (!_logger) {
         NSError *error = nil;
@@ -98,21 +98,21 @@
         }
     }
     
-    if (!self.motionManager || !self.motionManager.accelerometerAvailable) {
+    /* if (!self.motionManager || !self.motionManager.accelerometerAvailable) {
         NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                              code:NSFeatureUnsupportedError
                                          userInfo:@{@"recorder": self}];
         [self finishRecordingWithError:error];
         return;
-    }
+    } */
     
-    self.motionManager.accelerometerUpdateInterval = 1.0 / _frequency;
+    // self.motionManager.accelerometerUpdateInterval = 1.0 / _frequency;
     
     self.uptime = [NSProcessInfo processInfo].systemUptime;
     
-    [self.motionManager stopAccelerometerUpdates];
+    // [self.motionManager stopAccelerometerUpdates];
     
-    [self.motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMAccelerometerData *data, NSError *error) {
+    /* [self.motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMAccelerometerData *data, NSError *error) {
          BOOL success = NO;
          if (data) {
              success = [_logger append:[data ork_JSONDictionary] error:&error];
@@ -123,7 +123,7 @@
                  [self stop];
              });
          }
-     }];
+     }]; */
 }
 
 - (NSDictionary *)userInfo {
@@ -148,8 +148,8 @@
 
 - (void)doStopRecording {
     if (self.isRecording) {
-        [self.motionManager stopAccelerometerUpdates];
-        self.motionManager = nil;
+        // [self.motionManager stopAccelerometerUpdates];
+        // self.motionManager = nil;
     }
 }
 
@@ -164,9 +164,9 @@
     _logger = nil;
 }
 
-- (BOOL)isRecording {
+/* - (BOOL)isRecording {
     return self.motionManager.accelerometerActive;
-}
+} */
 
 - (NSString *)mimeType {
     return @"application/json";

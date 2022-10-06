@@ -123,7 +123,7 @@
 @interface ORKRangeOfMotionStepViewController () <ORKDeviceMotionRecorderDelegate> {
     ORKRangeOfMotionContentView *_contentView;
     UITapGestureRecognizer *_gestureRecognizer;
-    CMAttitude *_referenceAttitude;
+    // CMAttitude *_referenceAttitude;
     UIInterfaceOrientation _orientation;
 }
 
@@ -147,7 +147,7 @@
 }
 
 - (void)calculateAndSetAngles {
-    _startAngle = ([self getDeviceAngleInDegreesFromAttitude:_referenceAttitude]);
+    // _startAngle = ([self getDeviceAngleInDegreesFromAttitude:_referenceAttitude]);
     
     //This function calculates maximum and minimum angles recorded by the device
     if (_newAngle > _maxAngle) {
@@ -160,7 +160,7 @@
 
 #pragma mark - ORKDeviceMotionRecorderDelegate
 
-- (void)deviceMotionRecorderDidUpdateWithMotion:(CMDeviceMotion *)motion {
+/* - (void)deviceMotionRecorderDidUpdateWithMotion:(CMDeviceMotion *)motion {
     if (!_referenceAttitude) {
         _referenceAttitude = motion.attitude;
     }
@@ -179,7 +179,7 @@
     }
     
     [self calculateAndSetAngles];
-}
+} */
 
 /*
  When the device is in Portrait mode, we need to get the attitude's pitch
@@ -187,6 +187,7 @@
  orientations, so we use the attitude's quaternion to calculate the
  angle.
  */
+/*
 - (double)getDeviceAngleInDegreesFromAttitude:(CMAttitude *)attitude {
     if (!_orientation) {
         _orientation = self.view.window.windowScene.interfaceOrientation;
@@ -207,7 +208,7 @@
     }
     return angle;
 }
-
+*/
 
 #pragma mark - ORKActiveTaskViewController
 

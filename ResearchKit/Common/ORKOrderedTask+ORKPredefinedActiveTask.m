@@ -699,7 +699,7 @@ NSString *const ORKFitnessRestStepIdentifier = @"fitness.rest";
         ORKStepArrayAddStep(steps, step);
     }
     
-    HKUnit *bpmUnit = [[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]];
+    /* HKUnit *bpmUnit = [[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]];
     HKQuantityType *heartRateType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
     {
         if (walkDuration > 0) {
@@ -775,6 +775,7 @@ NSString *const ORKFitnessRestStepIdentifier = @"fitness.rest";
             ORKStepArrayAddStep(steps, stillStep);
         }
     }
+     */
     
     if (!(options & ORKPredefinedTaskOptionExcludeConclusion)) {
         ORKInstructionStep *step = [self makeCompletionStep];

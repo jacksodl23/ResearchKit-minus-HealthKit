@@ -46,11 +46,12 @@
 // @import AVFoundation;
 
 
-@interface ORKImageCaptureStepViewController () <ORKImageCaptureViewDelegate, AVCapturePhotoCaptureDelegate>
+/* @interface ORKImageCaptureStepViewController () <ORKImageCaptureViewDelegate, AVCapturePhotoCaptureDelegate>
 
 @end
+*/
 
-
+/*
 @implementation ORKImageCaptureStepViewController {
     ORKImageCaptureView *_imageCaptureView;
     dispatch_queue_t _sessionQueue;
@@ -425,3 +426,4 @@
 }
 
 @end
+*/

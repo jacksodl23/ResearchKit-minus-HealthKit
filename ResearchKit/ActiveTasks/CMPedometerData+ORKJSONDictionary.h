@@ -32,7 +32,7 @@
 // @import CoreMotion;
 
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
 /* @interface CMPedometerData (ORKJSONDictionary)
 
@@ -40,4 +40,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end */
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END

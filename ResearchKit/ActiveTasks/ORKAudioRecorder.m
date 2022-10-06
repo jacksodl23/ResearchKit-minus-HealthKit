@@ -38,7 +38,7 @@
 
 @interface ORKAudioRecorder ()
 
-@property (nonatomic, strong) AVAudioRecorder *audioRecorder;
+// @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
 
 @property (nonatomic, copy) NSDictionary *recorderSettings;
 
@@ -47,22 +47,22 @@
 @end
 
 
-@implementation ORKAudioRecorder
+// @implementation ORKAudioRecorder
 
-- (void)dealloc {
+/* - (void)dealloc {
     ORK_Log_Debug("Remove audiorecorder %p", self);
-    [_audioRecorder stop];
-    _audioRecorder = nil;
-}
+    // [_audioRecorder stop];
+    // _audioRecorder = nil;
+} */
 
-+ (NSDictionary *)defaultRecorderSettings {
+/* + (NSDictionary *)defaultRecorderSettings {
     return @{AVFormatIDKey              : @(kAudioFormatMPEG4AAC),
              AVEncoderAudioQualityKey   : @(AVAudioQualityMin),
              AVNumberOfChannelsKey      : @(2),
              AVSampleRateKey            : @(44100.0)};
-}
+} */
 
-- (instancetype)initWithIdentifier:(NSString *)identifier
+/* - (instancetype)initWithIdentifier:(NSString *)identifier
                   recorderSettings:(NSDictionary *)recorderSettings
                               step:(ORKStep *)step
                    outputDirectory:(NSURL *)outputDirectory {
@@ -79,24 +79,25 @@
         self.recorderSettings = recorderSettings;
     }
     return self;
-}
+} */
 
-- (void)restoreSavedAudioSessionCategory {
+/* - (void)restoreSavedAudioSessionCategory {
     if (_savedSessionCategory) {
-        NSError *error;
+        // NSError *error;
         if (![[AVAudioSession sharedInstance] setCategory:_savedSessionCategory error:&error]) {
             ORK_Log_Error("Failed to restore the audio session category: %@", [error localizedDescription]);
         }
         _savedSessionCategory = nil;
     }
 }
-
-- (void)start {
-    if (self.outputDirectory == nil) {
-        @throw [NSException exceptionWithName:NSDestinationInvalidException reason:@"audioRecorder requires an output directory" userInfo:nil];
-    }
+*/
+ 
+// - (void)start {
+    // if (self.outputDirectory == nil) {
+        // @throw [NSException exceptionWithName:NSDestinationInvalidException reason:@"audioRecorder requires an output directory" userInfo:nil];
+    // }
     // Only create the file when we should actually start recording.
-    if (!_audioRecorder) {
+    /* if (!_audioRecorder) {
         
         NSError *error = nil;
         NSURL *soundFileURL = [self recordingFileURL];
@@ -128,9 +129,9 @@
             [_audioRecorder prepareToRecord];
         }
 #endif
-    }
+    } */
     
-#if !TARGET_IPHONE_SIMULATOR
+/* #if !TARGET_IPHONE_SIMULATOR
     if (!_audioRecorder.recording) {
         [_audioRecorder prepareToRecord];
         [_audioRecorder record];
@@ -138,15 +139,15 @@
 #endif
     [super start];
     
-}
+} */
 
-- (void)stop {
-    if (!_audioRecorder) {
+// - (void)stop {
+    /* if (!_audioRecorder) {
         // Error has already been returned.
         return;
-    }
+    } */
     
-    [self doStopRecording];
+    /* [self doStopRecording];
     
     NSURL *fileUrl = [self recordingFileURL];
     if (![[NSFileManager defaultManager] fileExistsAtPath:[[self recordingFileURL] path]]) {
@@ -155,19 +156,19 @@
     
     [self reportFileResultWithFile:fileUrl error:nil];
     
-    [super stop];
-}
+    [super stop]; */
+// }
 
-- (BOOL)isRecording {
+/* - (BOOL)isRecording {
     return _audioRecorder.recording;
-}
+} */
 
-- (NSString *)mimeType {
-    NSDictionary *recorderSettings = [self recorderSettings];
-    unsigned int recorderFormat = ((NSNumber *)recorderSettings[AVFormatIDKey]).unsignedIntValue;
+// - (NSString *)mimeType {
+    // NSDictionary *recorderSettings = [self recorderSettings];
+    // unsigned int recorderFormat = ((NSNumber *)recorderSettings[AVFormatIDKey]).unsignedIntValue;
     
-    NSString *contentType = @"audio";
-    switch (recorderFormat) {
+    // NSString *contentType = @"audio";
+    /* switch (recorderFormat) {
         case kAudioFormatLinearPCM: {
             int numBits = ((NSNumber *)recorderSettings[AVLinearPCMBitDepthKey]).intValue ? : 16;
             contentType = [NSString stringWithFormat:@"audio/L%d", numBits];
@@ -189,15 +190,15 @@
             contentType = @"audio/basic";
             break;
         }
-    }
-    return contentType;
-}
+    } */
+    // return contentType;
+// }
 
-- (NSString *)recorderType {
+/* - (NSString *)recorderType {
     return @"audio";
-}
+} */
 
-- (void)doStopRecording {
+/* - (void)doStopRecording {
     if (self.isRecording) {
 #if !TARGET_IPHONE_SIMULATOR
         [_audioRecorder stop];
@@ -206,20 +207,20 @@
 #endif
         [self restoreSavedAudioSessionCategory];
     }
-}
+} */
 
-- (void)finishRecordingWithError:(NSError *)error {
+/* - (void)finishRecordingWithError:(NSError *)error {
     [self doStopRecording];
 
     [super finishRecordingWithError:error];
-}
+} */
 
-- (NSString *)extension {
-    NSDictionary *recorderSettings = [self recorderSettings];
-    unsigned int recorderFormat = ((NSNumber *)recorderSettings[AVFormatIDKey]).unsignedIntValue;
+// - (NSString *)extension {
+    // NSDictionary *recorderSettings = [self recorderSettings];
+    // unsigned int recorderFormat = ((NSNumber *)recorderSettings[AVFormatIDKey]).unsignedIntValue;
     
-    NSString *extension = @"au";
-    switch (recorderFormat) {
+    // NSString *extension = @"au";
+    /* switch (recorderFormat) {
         case kAudioFormatLinearPCM:
         {
             extension = @"pcm";
@@ -237,15 +238,15 @@
             extension = @"m4a";
             break;
         }
-    }
-    return extension;
-}
+    } */
+    // return extension;
+// }
 
-- (NSURL *)recordingFileURL {
+/* - (NSURL *)recordingFileURL {
     return [[self recordingDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", [self logName], [self extension]]];
-}
+} */
 
-- (BOOL)recreateFileWithError:(NSError **)errorOut {
+/* - (BOOL)recreateFileWithError:(NSError **)errorOut {
     NSURL *url = [self recordingFileURL];
     if (!url) {
         if (errorOut != NULL) {
@@ -270,14 +271,15 @@
     [fileManager setAttributes:@{NSFileProtectionKey: ORKFileProtectionFromMode(ORKFileProtectionCompleteUnlessOpen)} ofItemAtPath:[url path] error:errorOut];
     return YES;
 }
+ */
 
-- (void)reset {
-    [_audioRecorder stop];
-    _audioRecorder = nil;
+/* - (void)reset {
+    // [_audioRecorder stop];
+    // _audioRecorder = nil;
     [super reset];
-}
+} */
 
-@end
+// @end
 
 
 @implementation ORKAudioRecorderConfiguration

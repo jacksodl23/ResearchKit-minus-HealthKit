@@ -33,7 +33,7 @@
 
 #import "ORKHelpers_Internal.h"
 
-
+/*
 @implementation CLLocation (ORKJSONDictionary)
 
 - (NSDictionary *)ork_JSONDictionary {
@@ -71,3 +71,4 @@
 }
 
 @end
+*/

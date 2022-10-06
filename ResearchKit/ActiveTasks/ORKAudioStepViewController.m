@@ -50,7 +50,7 @@
 
 @interface ORKAudioStepViewController ()
 
-@property (nonatomic, strong) AVAudioRecorder *avAudioRecorder;
+// @property (nonatomic, strong) AVAudioRecorder *avAudioRecorder;
 
 @end
 
@@ -91,10 +91,10 @@
     self.activeStepView.activeCustomView = _audioContentView;
 }
 
-- (void)audioRecorderDidChange {
+/* - (void)audioRecorderDidChange {
     _audioRecorder.audioRecorder.meteringEnabled = YES;
     [self setAvAudioRecorder:_audioRecorder.audioRecorder];
-}
+} */
 
 - (void)recordersDidChange {
     ORKAudioRecorder *audioRecorder = nil;
@@ -105,7 +105,7 @@
         }
     }
     _audioRecorder = audioRecorder;
-    [self audioRecorderDidChange];
+    // [self audioRecorderDidChange];
 }
 
 - (ORKAudioStep *)audioStep {
@@ -116,12 +116,12 @@
     if (_audioRecorderError) {
         return;
     }
-    [_avAudioRecorder updateMeters];
+    /* [_avAudioRecorder updateMeters];
     float value = [_avAudioRecorder averagePowerForChannel:0];
     // Assume value is in range roughly -60dB to 0dB
     float clampedValue = MAX(value / 60.0, -1) + 1;
     [_audioContentView addSample:@(clampedValue)];
-    _audioContentView.timeLeft = [_timer duration] - [_timer runtime];
+    _audioContentView.timeLeft = [_timer duration] - [_timer runtime]; */
 }
 
 - (void)startNewTimerIfNeeded {
@@ -142,7 +142,7 @@
 
 - (void)start {
     [super start];
-    [self audioRecorderDidChange];
+    // [self audioRecorderDidChange];
     [_timer reset];
     _timer = nil;
     [self startNewTimerIfNeeded];
@@ -152,14 +152,14 @@
 - (void)suspend {
     [super suspend];
     [_timer pause];
-    if (_avAudioRecorder) {
+    /* if (_avAudioRecorder) {
         [_audioContentView addSample:@(0)];
-    }
+    } */
 }
 
 - (void)resume {
     [super resume];
-    [self audioRecorderDidChange];
+    // [self audioRecorderDidChange];
     [self startNewTimerIfNeeded];
     [_timer resume];
 }
@@ -177,10 +177,10 @@
     _audioContentView.finished = YES;
 }
 
-- (void)setAvAudioRecorder:(AVAudioRecorder *)recorder {
+/* - (void)setAvAudioRecorder:(AVAudioRecorder *)recorder {
     _avAudioRecorder = nil;
     _avAudioRecorder = recorder;
-}
+} */
 
 - (void)recorder:(ORKRecorder *)recorder didFailWithError:(NSError *)error {
     [super recorder:recorder didFailWithError:error];

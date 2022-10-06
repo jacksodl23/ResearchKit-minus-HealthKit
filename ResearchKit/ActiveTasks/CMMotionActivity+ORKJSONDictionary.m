@@ -42,14 +42,14 @@ static NSString *const ActivityAutomotive = @"automotive";
 static NSString *const StartDateKey = @"startDate";
 static NSString *const EndDateKey = @"endDate";
 
-static NSString *stringFromActivityConfidence(CMMotionActivityConfidence confidence) {
+/* static NSString *stringFromActivityConfidence(CMMotionActivityConfidence confidence) {
     NSDictionary *confidences = @{@(CMMotionActivityConfidenceHigh): @"high",
                                   @(CMMotionActivityConfidenceMedium): @"medium",
                                   @(CMMotionActivityConfidenceLow): @"low"};
     return confidences[@(confidence)];
-}
+} */
 
-static NSArray *activityArray(CMMotionActivity *activity) {
+/* static NSArray *activityArray(CMMotionActivity *activity) {
     NSMutableArray *array = [NSMutableArray array];
     if (activity.unknown) {
         [array addObject:ActivityUnknown];
@@ -67,13 +67,13 @@ static NSArray *activityArray(CMMotionActivity *activity) {
         [array addObject:ActivityAutomotive];
     }
     return array;
-}
+} */
 
 static NSString *const ActivityKey = @"activity";
 static NSString *const ConfidenceKey = @"confidence";
 
 
-@implementation CMMotionActivity (ORKJSONDictionary)
+/* @implementation CMMotionActivity (ORKJSONDictionary)
 
 - (NSDictionary *)ork_JSONDictionary {
     return @{ConfidenceKey: stringFromActivityConfidence(self.confidence),
@@ -82,3 +82,4 @@ static NSString *const ConfidenceKey = @"confidence";
 }
 
 @end
+*/

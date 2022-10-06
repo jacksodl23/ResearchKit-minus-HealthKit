@@ -228,7 +228,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
         // ORK_DECODE_OBJ_CLASS(aDecoder, correlationType, HKCorrelationType);
         // ORK_DECODE_OBJ_ARRAY(aDecoder, sampleTypes, HKSampleType);
         // ORK_DECODE_OBJ_ARRAY(aDecoder, units, HKUnit);
-        ORK_DECODE_OBJ_CLASS(aDecoder, startDate, NSDate);
+        // ORK_DECODE_OBJ_CLASS(aDecoder, startDate, NSDate);
         // ORK_DECODE_OBJ_CLASS(aDecoder, lastAnchor, HKQueryAnchor);
     }
     return self;
@@ -272,7 +272,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     return [[ORKHealthSampleQueryOperation alloc] initWithCollector:self mananger:manager];
 } */
 
-- (instancetype)copyWithZone:(NSZone *)zone {
+/* - (instancetype)copyWithZone:(NSZone *)zone {
     ORKHealthCorrelationCollector *collector = [super copyWithZone:zone];
     collector->_startDate = self.startDate;
     // collector->_correlationType = self.correlationType;
@@ -281,9 +281,9 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
     // collector->_lastAnchor = self.lastAnchor;
     
     return collector;
-}
+} */
 
-- (BOOL)isEqual:(id)object {
+/* - (BOOL)isEqual:(id)object {
     BOOL isParentSame = [super isEqual:object];
     
     __typeof(self) castObject = object;
@@ -293,7 +293,7 @@ static NSString *const ItemIdentifierFormatWithTwoPlaceholders = @"org.researchk
             // ORKEqualObjects(_units, castObject.units) &&
             // ORKEqualObjects(_startDate, castObject.startDate) &&
             // ORKEqualObjects(_lastAnchor, castObject.lastAnchor));
-}
+} */
 
 @end
 

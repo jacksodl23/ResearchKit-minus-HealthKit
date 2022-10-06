@@ -31,7 +31,7 @@
 
 #import "CMDeviceMotion+ORKJSONDictionary.h"
 
-
+/*
 @implementation CMDeviceMotion (ORKJSONDictionary)
 
 - (NSDictionary *)ork_JSONDictionary {
@@ -74,3 +74,4 @@
 }
 
 @end
+*/

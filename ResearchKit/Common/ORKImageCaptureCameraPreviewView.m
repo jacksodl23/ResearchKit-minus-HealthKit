@@ -39,7 +39,7 @@
 
 
 @implementation ORKImageCaptureCameraPreviewView {
-    AVCaptureVideoPreviewLayer *_previewLayer;
+    // AVCaptureVideoPreviewLayer *_previewLayer;
     ORKTintedImageView *_templateImageView;
     NSLayoutConstraint *_templateImageViewTopInsetConstraint;
     NSLayoutConstraint *_templateImageViewLeftInsetConstraint;
@@ -51,10 +51,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _previewLayer = [[AVCaptureVideoPreviewLayer alloc] init];
+        /* _previewLayer = [[AVCaptureVideoPreviewLayer alloc] init];
         _previewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
         _previewLayer.needsDisplayOnBoundsChange = YES;
-        [self.layer addSublayer:_previewLayer];
+        [self.layer addSublayer:_previewLayer]; */
         
         _capturedImageView = [[UIImageView alloc] init];
         _capturedImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -138,13 +138,13 @@
     [NSLayoutConstraint activateConstraints:constraints];
 }
 
-- (AVCaptureSession *)session {
+/* - (AVCaptureSession *)session {
     return _previewLayer.session;
-}
+} */
 
-- (void)setSession:(AVCaptureSession *)session {
+/* - (void)setSession:(AVCaptureSession *)session {
     _previewLayer.session = session;
-}
+} */
 
 - (UIImage *)templateImage {
     return _templateImageView.image;
@@ -176,14 +176,14 @@
 
 - (void)setCapturedImage:(UIImage *)capturedImage {
     _capturedImageView.image = capturedImage;
-    _previewLayer.hidden = (capturedImage != nil);
+    // _previewLayer.hidden = (capturedImage != nil);
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     // Ensure that the preview layer takes up all the space
-    _previewLayer.frame = self.frame;
+    // _previewLayer.frame = self.frame;
     
     // Update the insets for the template and catpured image views
     [self updateInsets];
@@ -191,13 +191,13 @@
 
 - (void)updateInsets {
     // Update the layoutMargins to match those being used by the preview layer content, if needed
-    UIEdgeInsets previewLayerContentFrameInsets = [self getPreviewLayerContentFrameInsets];
+    /* UIEdgeInsets previewLayerContentFrameInsets = [self getPreviewLayerContentFrameInsets];
     if (!UIEdgeInsetsEqualToEdgeInsets(previewLayerContentFrameInsets, self.layoutMargins)) {
         self.layoutMargins = previewLayerContentFrameInsets;
-    }
+    } */
     
     // Update the insets on the template image view, if needed
-    CGRect previewLayerContentFrame = UIEdgeInsetsInsetRect(_previewLayer.frame, previewLayerContentFrameInsets);
+    /* CGRect previewLayerContentFrame = UIEdgeInsetsInsetRect(_previewLayer.frame, previewLayerContentFrameInsets);
     UIEdgeInsets insets = UIEdgeInsetsMake(round(self.templateImageInsets.top * previewLayerContentFrame.size.height),
                                            round(self.templateImageInsets.left * previewLayerContentFrame.size.width),
                                            round(self.templateImageInsets.bottom * previewLayerContentFrame.size.height),
@@ -215,9 +215,10 @@
     if (_templateImageViewRightInseConstraint.constant != -insets.right) {
         _templateImageViewRightInseConstraint.constant = -insets.right;
     }
+     */
 }
 
-- (UIEdgeInsets)getPreviewLayerContentFrameInsets {
+/* - (UIEdgeInsets)getPreviewLayerContentFrameInsets {
     // Determine the insets on the preview layer frame that correspond to the actual video content
     // when using a videoGravity of AVLayerVideoGravityResizeAspect;
     NSArray *inputs = _previewLayer.session.inputs;
@@ -234,15 +235,15 @@
                             contentFrame.origin.x - overallFrame.origin.x,
                             (overallFrame.origin.y + overallFrame.size.height) - (contentFrame.origin.y + contentFrame.size.height),
                             (overallFrame.origin.x + overallFrame.size.width) - (contentFrame.origin.x + contentFrame.size.width));
-}
+} */
 
-- (AVCaptureVideoOrientation)videoOrientation {
+/* - (AVCaptureVideoOrientation)videoOrientation {
     return _previewLayer.connection.videoOrientation;
-}
+} */
 
-- (void)setVideoOrientation:(AVCaptureVideoOrientation)videoOrientation {
+/* - (void)setVideoOrientation:(AVCaptureVideoOrientation)videoOrientation {
     _previewLayer.connection.videoOrientation = videoOrientation;
-}
+} */
 
 #pragma mark - Accessibility
 

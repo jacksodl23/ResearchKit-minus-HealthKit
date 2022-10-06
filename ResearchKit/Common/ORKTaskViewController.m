@@ -66,15 +66,16 @@
 
 typedef void (^_ORKLocationAuthorizationRequestHandler)(BOOL success);
 
-@interface ORKLocationAuthorizationRequester : NSObject <CLLocationManagerDelegate>
+/* @interface ORKLocationAuthorizationRequester : NSObject <CLLocationManagerDelegate>
 
 - (instancetype)initWithHandler:(_ORKLocationAuthorizationRequestHandler)handler;
 
 - (void)resume;
 
 @end
+*/
 
-
+/*
 @implementation ORKLocationAuthorizationRequester {
     CLLocationManager *_manager;
     _ORKLocationAuthorizationRequestHandler _handler;
@@ -154,7 +155,7 @@ typedef void (^_ORKLocationAuthorizationRequestHandler)(BOOL success);
 
 
 @end
-
+*/
 
 @interface ORKTaskViewController () <ORKTaskReviewViewControllerDelegate, UINavigationControllerDelegate> {
     NSMutableDictionary *_managedResults;
@@ -373,7 +374,7 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
     }]; */
 }
 
-- (void)requestPedometerAccessWithHandler:(void (^)(BOOL success))handler {
+/* - (void)requestPedometerAccessWithHandler:(void (^)(BOOL success))handler {
     NSParameterAssert(handler != nil);
     if (![CMPedometer isStepCountingAvailable]) {
         handler(NO);
@@ -407,27 +408,27 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
                                   // Clear self ref to release.
                                   pedometer = nil;
                               }];
-}
+} */
 
-- (void)requestAudioRecordingAccessWithHandler:(void (^)(BOOL success))handler {
+/* - (void)requestAudioRecordingAccessWithHandler:(void (^)(BOOL success))handler {
     NSParameterAssert(handler != nil);
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(granted);
         });
     }];
-}
+} */
 
-- (void)requestCameraAccessWithHandler:(void (^)(BOOL success))handler {
+/* - (void)requestCameraAccessWithHandler:(void (^)(BOOL success))handler {
     NSParameterAssert(handler != nil);
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(granted);
         });
     }];
-}
+} */
 
-- (void)requestLocationAccessWithHandler:(void (^)(BOOL success))handler {
+/* - (void)requestLocationAccessWithHandler:(void (^)(BOOL success))handler {
     NSParameterAssert(handler != nil);
     
     // Self-retain; clear the retain cycle in the handler block.
@@ -440,7 +441,7 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
      }];
     
     [requester resume];
-}
+} */
 
 - (ORKPermissionMask)desiredPermissions {
     ORKPermissionMask permissions = ORKPermissionNone;
@@ -466,7 +467,7 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
         writeTypes = [self.task requestedHealthKitTypesForWriting];
     } */
     
-    ORKPermissionMask permissions = [self desiredPermissions];
+    // ORKPermissionMask permissions = [self desiredPermissions];
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
@@ -480,7 +481,7 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
                                                 }];
         });
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        if (permissions & ORKPermissionCoreMotionAccelerometer) {
+        /* if (permissions & ORKPermissionCoreMotionAccelerometer) {
             _grantedPermissions |= ORKPermissionCoreMotionAccelerometer;
         }
         if (permissions & ORKPermissionCoreMotionActivity) {
@@ -543,7 +544,8 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
             
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         }
-        
+        */
+         
         _hasRequestedHealthData = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
             _hasRequestedHealthData = YES;

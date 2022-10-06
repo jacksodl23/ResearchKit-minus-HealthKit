@@ -112,7 +112,7 @@
     } */
 
     _isRecording = YES;
-    ORKWeakTypeOf(self) weakSelf = self;
+    // ORKWeakTypeOf(self) weakSelf = self;
     /* [self.pedometer startPedometerUpdatesFromDate:[NSDate date] withHandler:^(CMPedometerData *pedometerData, NSError *error) {
         
         BOOL success = NO;

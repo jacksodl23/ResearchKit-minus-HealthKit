@@ -31,23 +31,23 @@
 
 #import "ORKSpeechRecognizer.h"
 
-#import <Speech/SFSpeechRecognitionRequest.h>
+/* #import <Speech/SFSpeechRecognitionRequest.h>
 #import <Speech/SFSpeechRecognizer.h>
 #import <Speech/SFSpeechRecognitionTask.h>
 #import <Speech/SFTranscription.h>
 #import <Speech/SFSpeechRecognitionResult.h>
-#import <Speech/SFTranscriptionSegment.h>
+#import <Speech/SFTranscriptionSegment.h> */
 
 #import <ResearchKit/ORKRecorder.h>
 #import "ORKHelpers_Internal.h"
 #import "ORKSpeechRecognitionError.h"
 
 
-@interface ORKSpeechRecognizer() <SFSpeechRecognitionTaskDelegate, SFSpeechRecognizerDelegate>
+/* @interface ORKSpeechRecognizer() <SFSpeechRecognitionTaskDelegate, SFSpeechRecognizerDelegate>
 @property(nonatomic, weak) id<ORKSpeechRecognitionDelegate> responseDelegate;
-@end
+@end */
 
-@implementation ORKSpeechRecognizer {
+/* @implementation ORKSpeechRecognizer {
     SFSpeechAudioBufferRecognitionRequest *request;
     SFSpeechRecognizer *recognizer;
     dispatch_queue_t _requestQueue;
@@ -163,3 +163,4 @@
 }
 
 @end
+*/
