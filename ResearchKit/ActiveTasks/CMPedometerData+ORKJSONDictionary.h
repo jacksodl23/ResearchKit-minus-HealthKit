@@ -34,10 +34,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CMPedometerData (ORKJSONDictionary)
+/* @interface CMPedometerData (ORKJSONDictionary)
 
 - (NSDictionary *)ork_JSONDictionary;
 
-@end
+@end */
 
 NS_ASSUME_NONNULL_END

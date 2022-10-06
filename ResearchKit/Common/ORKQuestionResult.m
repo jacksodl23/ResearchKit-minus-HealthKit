@@ -311,17 +311,17 @@
 
 #pragma mark - ORKLocationQuestionResult
 
-@implementation ORKLocation
+// @implementation ORKLocation
 
-+ (instancetype)new {
-    ORKThrowMethodUnavailableException();
-}
+// + (instancetype)new {
+    // ORKThrowMethodUnavailableException();
+// }
 
-- (instancetype)init {
-    ORKThrowMethodUnavailableException();
-}
+// - (instancetype)init {
+    // ORKThrowMethodUnavailableException();
+// }
 
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+/* - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
                             region:(CLCircularRegion *)region
                          userInput:(NSString *)userInput
                      postalAddress:(CNPostalAddress *)postalAddress{
@@ -333,9 +333,9 @@
         _postalAddress = [postalAddress copy];
     }
     return self;
-}
+} */
 
-- (instancetype)initWithPlacemark:(CLPlacemark *)placemark userInput:(NSString *)userInput {
+/* - (instancetype)initWithPlacemark:(CLPlacemark *)placemark userInput:(NSString *)userInput {
     self = [super init];
     if (self) {
         _coordinate = placemark.location.coordinate;
@@ -344,25 +344,25 @@
         _postalAddress = [placemark.postalAddress copy];
     }
     return self;
-}
+} */
 
-- (id)copyWithZone:(NSZone *)zone {
+/* - (id)copyWithZone:(NSZone *)zone {
     return [[[self class] alloc] initWithCoordinate:self.coordinate
                                              region:self.region
                                           userInput:self.userInput
                                       postalAddress:self.postalAddress];
-}
+} */
 
-+ (BOOL)supportsSecureCoding {
+/* + (BOOL)supportsSecureCoding {
     return YES;
-}
+} */
 
-static NSString *const RegionCenterLatitudeKey = @"region.center.latitude";
+/* static NSString *const RegionCenterLatitudeKey = @"region.center.latitude";
 static NSString *const RegionCenterLongitudeKey = @"region.center.longitude";
 static NSString *const RegionRadiusKey = @"region.radius";
-static NSString *const RegionIdentifierKey = @"region.identifier";
+static NSString *const RegionIdentifierKey = @"region.identifier"; */
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+/* - (void)encodeWithCoder:(NSCoder *)aCoder {
     ORK_ENCODE_OBJ(aCoder, userInput);
     ORK_ENCODE_COORDINATE(aCoder, coordinate);
     ORK_ENCODE_OBJ(aCoder, postalAddress);
@@ -371,9 +371,9 @@ static NSString *const RegionIdentifierKey = @"region.identifier";
     [aCoder encodeObject:@(_region.center.longitude) forKey:RegionCenterLongitudeKey];
     [aCoder encodeObject:_region.identifier forKey:RegionIdentifierKey];
     [aCoder encodeObject:@(_region.radius) forKey:RegionRadiusKey];
-}
+} */
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+/* - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
         ORK_DECODE_OBJ_CLASS(aDecoder, userInput, NSString);
@@ -390,15 +390,15 @@ static NSString *const RegionIdentifierKey = @"region.identifier";
                                                 identifier:[aDecoder decodeObjectOfClass:[NSString class] forKey:RegionIdentifierKey]];
     }
     return self;
-}
+} */
 
-- (NSUInteger)hash {
+/* - (NSUInteger)hash {
     NSUInteger regionHash = (NSUInteger)(self.region.center.latitude * 1000) ^ (NSUInteger)(self.region.center.longitude * 1000) ^ (NSUInteger)(self.region.radius * 1000);
     NSUInteger coordinateHash = (NSUInteger)(self.coordinate.latitude * 1000) ^ (NSUInteger)(self.coordinate.longitude * 1000);
     return coordinateHash ^ regionHash ^ self.userInput.hash ^ self.postalAddress.hash;
-}
+} */
 
-- (BOOL)isEqual:(id)object {
+/* - (BOOL)isEqual:(id)object {
     if ([self class] != [object class]) {
         return NO;
     }
@@ -411,13 +411,13 @@ static NSString *const RegionIdentifierKey = @"region.identifier";
             (self.region.center.longitude == castObject.region.center.longitude) &&
             (self.region.radius == castObject.region.radius) &&
             ORKEqualObjects([NSValue valueWithMKCoordinate:self.coordinate], [NSValue valueWithMKCoordinate:castObject.coordinate]));
-}
+} */
 
-- (NSString *)description {
+/* - (NSString *)description {
     return [NSString stringWithFormat:@"%@ region:%@ userInput:%@ postalAddress:%@>", [super description], self.region, self.userInput, self.postalAddress];
-}
+} */
 
-@end
+// @end
 
 
 @implementation ORKLocationQuestionResult

@@ -329,7 +329,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     ORKWeakTypeOf(self) weakSelf = self;
-    CLLocation *cllocation = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
+    /* CLLocation *cllocation = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
     [geocoder reverseGeocodeLocation:cllocation completionHandler:^(NSArray *placemarks, NSError *error) {
         ORKStrongTypeOf(weakSelf) strongSelf = weakSelf;
         if (error) {
@@ -341,7 +341,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
                                                                userInput:location.userInput ? : placemark.ork_addressLine]
                         updateMap:YES];
         }
-    }];
+    }]; */
 }
 
 - (void)setAnswer:(ORKLocation *)answer {
@@ -363,11 +363,11 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     
     if (location) {
         
-        if (!location.userInput || !location.region |!location.postalAddress) {
+        /* if (!location.userInput || !location.region |!location.postalAddress) {
             // redo geo decoding if any of them is missing
             [self reverseGeocodeAndDisplay:location];
             return;
-        }
+        } */
         
         if (location.userInput) {
             _textField.text = location.userInput;
@@ -385,11 +385,11 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
 
 - (void)updateMapWithLocation:(ORKLocation *)location {
     
-    MKPlacemark *placemark = location ? [[MKPlacemark alloc] initWithCoordinate:location.coordinate postalAddress:location.postalAddress] : nil;
+    // MKPlacemark *placemark = location ? [[MKPlacemark alloc] initWithCoordinate:location.coordinate postalAddress:location.postalAddress] : nil;
     
     [_mapView removeAnnotations:_mapView.annotations];
     
-    if (placemark) {
+    /* if (placemark) {
         [_mapView addAnnotation:placemark];
         CLLocationDistance span = MAX(200, location.region.radius);
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.region.center, span, span);
@@ -398,7 +398,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
         if (_setInitialCoordinateRegion) {
             [self setMapRegion:_initalCoordinateRegion];
         }
-    }
+    } */
 }
 
 - (void)setMapRegion:(MKCoordinateRegion)region {

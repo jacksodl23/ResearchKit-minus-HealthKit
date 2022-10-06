@@ -44,7 +44,7 @@
     BOOL _isRecording;
 }
 
-@property (nonatomic, strong) CMPedometer *pedometer;
+// @property (nonatomic, strong) CMPedometer *pedometer;
 
 @end
 
@@ -67,7 +67,7 @@
     [_logger finishCurrentLog];
 }
 
-- (void)updateStatisticsWithData:(CMPedometerData *)pedometerData {
+/* - (void)updateStatisticsWithData:(CMPedometerData *)pedometerData {
     _lastUpdateDate = pedometerData.endDate;
     _totalNumberOfSteps = pedometerData.numberOfSteps.integerValue;
     if (pedometerData.distance) {
@@ -80,11 +80,11 @@
     if ([delegate respondsToSelector:@selector(pedometerRecorderDidUpdate:)]) {
         [delegate pedometerRecorderDidUpdate:self];
     }
-}
+} */
 
-- (CMPedometer *)createPedometer {
+/* - (CMPedometer *)createPedometer {
     return [[CMPedometer alloc] init];
-}
+} */
 
 - (void)start {
     [super start];
@@ -102,18 +102,18 @@
         }
     }
     
-    self.pedometer = [self createPedometer];
+    /* self.pedometer = [self createPedometer];
     
     if (![[self.pedometer class] isStepCountingAvailable]) {
         [self finishRecordingWithError:[NSError errorWithDomain:NSCocoaErrorDomain
                                                            code:NSFeatureUnsupportedError
                                                        userInfo:@{@"recorder": self}]];
         return;
-    }
+    } */
 
     _isRecording = YES;
     ORKWeakTypeOf(self) weakSelf = self;
-    [self.pedometer startPedometerUpdatesFromDate:[NSDate date] withHandler:^(CMPedometerData *pedometerData, NSError *error) {
+    /* [self.pedometer startPedometerUpdatesFromDate:[NSDate date] withHandler:^(CMPedometerData *pedometerData, NSError *error) {
         
         BOOL success = NO;
         if (pedometerData) {
@@ -129,7 +129,7 @@
                 [strongSelf finishRecordingWithError:error];
             });
         }
-    }];
+    }]; */
 }
 
 - (NSString *)recorderType {
@@ -153,11 +153,11 @@
 }
 
 - (void)doStopRecording {
-    if (_isRecording) {
+    /* if (_isRecording) {
         [self.pedometer stopPedometerUpdates];
         _isRecording = NO;
         self.pedometer = nil;
-    }
+    } */
 }
 
 - (void)finishRecordingWithError:(NSError *)error {

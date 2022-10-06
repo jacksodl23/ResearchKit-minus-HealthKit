@@ -78,9 +78,9 @@
         NSDictionary *dictionary = NSDictionaryOfVariableBindings(self, _previewView, _navigationFooterView, _headerView);
         ORKEnableAutoLayoutForViews(dictionary.allValues);
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queue_sessionRunning) name:AVCaptureSessionDidStartRunningNotification object:nil];
+        /* [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queue_sessionRunning) name:AVCaptureSessionDidStartRunningNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionWasInterrupted:) name:AVCaptureSessionWasInterruptedNotification object:self.session];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionInterruptionEnded:) name:AVCaptureSessionInterruptionEndedNotification object:self.session];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionInterruptionEnded:) name:AVCaptureSessionInterruptionEndedNotification object:self.session]; */
 
         [self updateAppearance];
     }
@@ -98,7 +98,7 @@
 }
 
 - (void)orientationDidChange {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    /* dispatch_async(dispatch_get_main_queue(), ^{
         AVCaptureVideoOrientation orientation = AVCaptureVideoOrientationPortrait;
 
         UIWindowScene *windowScene = self.window.windowScene;
@@ -126,7 +126,7 @@
         [_previewView setVideoOrientation:orientation];
         [self.delegate videoOrientationDidChange:orientation];
         [self setNeedsUpdateConstraints];
-    });
+    }); */
 }
 
 - (void)setImageCaptureStep:(ORKImageCaptureStep *)imageCaptureStep {
@@ -269,15 +269,15 @@
     [super updateConstraints];
 }
 
-- (AVCaptureSession *)session {
+/* - (AVCaptureSession *)session {
     return _previewView.session;
-}
+} */
 
-- (void)setSession:(AVCaptureSession *)session {
+/* - (void)setSession:(AVCaptureSession *)session {
     _previewView.session = session;
     // Set up the proper videoOrientation from the start
     [self orientationDidChange];
-}
+} */
 
 - (void)setSkipButtonItem:(UIBarButtonItem *)skipButtonItem {
     if (_showSkipButtonItem) {
@@ -326,12 +326,12 @@
     }];
 }
 
-- (void)sessionWasInterrupted:(NSNotification *)notification {
+/* - (void)sessionWasInterrupted:(NSNotification *)notification {
     AVCaptureSessionInterruptionReason reason = [notification.userInfo[AVCaptureSessionInterruptionReasonKey] integerValue];
     if (reason == AVCaptureSessionInterruptionReasonVideoDeviceNotAvailableWithMultipleForegroundApps) {
         [self setError:[[NSError alloc] initWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey: ORKLocalizedString(@"CAMERA_UNAVAILABLE_MESSAGE", nil)}]];
     }
-}
+} */
 
 - (void)sessionInterruptionEnded:(NSNotification *)notification {
     [self setError:nil];

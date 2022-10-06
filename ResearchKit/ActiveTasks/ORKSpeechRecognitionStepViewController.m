@@ -65,7 +65,7 @@
 @implementation ORKSpeechRecognitionStepViewController {
     ORKSpeechRecognitionContentView *_speechRecognitionContentView;
     ORKStreamingAudioRecorder *_audioRecorder;
-    ORKSpeechRecognizer *_speechRecognizer;
+    // ORKSpeechRecognizer *_speechRecognizer;
     
     dispatch_queue_t _speechRecognitionQueue;
     ORKSpeechRecognitionResult *_localResult;
@@ -97,14 +97,14 @@
     
     _errorState = NO;
    
-    [ORKSpeechRecognizer requestAuthorization];
+    // [ORKSpeechRecognizer requestAuthorization];
 
     _localResult = [[ORKSpeechRecognitionResult alloc] initWithIdentifier:self.step.identifier];
     _speechRecognitionQueue = dispatch_queue_create("SpeechRecognitionQueue", DISPATCH_QUEUE_SERIAL);
 }
 
 - (void)initializeRecognizer {
-    _speechRecognizer = [[ORKSpeechRecognizer alloc] init];
+    /* _speechRecognizer = [[ORKSpeechRecognizer alloc] init];
     
     if (_speechRecognizer) {
         [_speechRecognizer startRecognitionWithLocale:[NSLocale localeWithLocaleIdentifier:((ORKSpeechRecognitionStep *)self.step).speechRecognizerLocale] reportPartialResults:YES responseDelegate:self errorHandler:^(NSError *error) {
@@ -112,7 +112,7 @@
                 [self stopWithError:error];
             }
         }];
-    }
+    } */
 }
 
 - (void)recordButtonPressed:(id)sender {
@@ -158,9 +158,9 @@
 }
 
 - (void)stopWithError:(NSError *)error {
-    if (_speechRecognizer) {
+    /* if (_speechRecognizer) {
         [_speechRecognizer endAudio];
-    }
+    } */
     
     if (error) {
         ORK_Log_Error("Speech recognition failed with error message: \"%@\"", error.localizedDescription);
@@ -213,7 +213,7 @@
     if (_errorState) {
         return;
     }
-    [_speechRecognizer addAudio:buffer];
+    // [_speechRecognizer addAudio:buffer];
     
     // audio metering display
     float * const *channelData = [buffer floatChannelData];

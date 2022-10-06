@@ -83,7 +83,7 @@ ORK_CLASS_AVAILABLE
  
  The value of this property is used in the audio task in order to display recorded volume in real time during the task.
  */
-@property (nonatomic, strong, readonly, nullable) AVAudioRecorder *audioRecorder;
+// @property (nonatomic, strong, readonly, nullable) AVAudioRecorder *audioRecorder;
 
 @end
 

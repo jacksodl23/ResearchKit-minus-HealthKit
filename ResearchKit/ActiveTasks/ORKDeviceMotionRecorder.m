@@ -45,7 +45,7 @@
     ORKDataLogger *_logger;
 }
 
-@property (nonatomic, strong) CMMotionManager *motionManager;
+// @property (nonatomic, strong) CMMotionManager *motionManager;
 
 @property (nonatomic) NSTimeInterval uptime;
 
@@ -80,9 +80,9 @@
     }
 }
 
-- (CMMotionManager *)createMotionManager {
+/* - (CMMotionManager *)createMotionManager {
     return [[CMMotionManager alloc] init];
-}
+} */
 
 - (void)start {
     [super start];
@@ -96,7 +96,7 @@
         }
     }
     
-    self.motionManager = [self createMotionManager];
+    /* self.motionManager = [self createMotionManager];
     self.motionManager.deviceMotionUpdateInterval = 1.0 / _frequency;
     
     self.uptime = [NSProcessInfo processInfo].systemUptime;
@@ -117,7 +117,7 @@
                  [self finishRecordingWithError:error];
              });
          }
-     }];
+     }]; */
 }
 
 - (NSString *)recorderType {
@@ -141,8 +141,8 @@
 
 - (void)doStopRecording {
     if (self.isRecording) {
-        [self.motionManager stopDeviceMotionUpdates];
-        self.motionManager = nil;
+        // [self.motionManager stopDeviceMotionUpdates];
+        // self.motionManager = nil;
     }
 }
 
@@ -151,9 +151,9 @@
     [super finishRecordingWithError:error];
 }
 
-- (BOOL)isRecording {
+/* - (BOOL)isRecording {
     return self.motionManager.deviceMotionActive;
-}
+} */
 
 - (NSString *)mimeType {
     return @"application/json";
