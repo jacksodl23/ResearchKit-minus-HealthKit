@@ -30,7 +30,7 @@
 
 
 #import <ResearchKit/ResearchKit.h>
-#import <CoreMotion/CMDeviceMotion.h>
+// #import <CoreMotion/CMDeviceMotion.h>
 
 
 NS_ASSUME_NONNULL_BEGIN

@@ -60,9 +60,9 @@
 #import "ORKBorderedButton.h"
 #import "ORKTaskReviewViewController.h"
 
-@import AVFoundation;
-@import CoreMotion;
-#import <CoreLocation/CoreLocation.h>
+// @import AVFoundation;
+// @import CoreMotion;
+// #import <CoreLocation/CoreLocation.h>
 
 typedef void (^_ORKLocationAuthorizationRequestHandler)(BOOL success);
 

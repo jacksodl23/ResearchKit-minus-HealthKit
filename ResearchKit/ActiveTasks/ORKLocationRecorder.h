@@ -30,7 +30,7 @@
 
 
 @import UIKit;
-@import CoreLocation;
+// @import CoreLocation;
 #import <ResearchKit/ORKRecorder.h>
 
 

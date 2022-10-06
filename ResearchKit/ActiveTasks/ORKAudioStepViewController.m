@@ -45,7 +45,7 @@
 
 #import "ORKHelpers_Internal.h"
 
-@import AVFoundation;
+// @import AVFoundation;
 
 
 @interface ORKAudioStepViewController ()

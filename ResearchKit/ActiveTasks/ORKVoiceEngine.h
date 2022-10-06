@@ -30,7 +30,7 @@
 
 
 @import Foundation;
-@import AVFoundation;
+// @import AVFoundation;
 
 
 NS_ASSUME_NONNULL_BEGIN

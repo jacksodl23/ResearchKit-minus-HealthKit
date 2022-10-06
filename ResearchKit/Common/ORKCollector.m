@@ -32,11 +32,11 @@
 #import "ORKCollector.h"
 #import "ORKCollector_Internal.h"
 #import "ORKHelpers_Internal.h"
-#import "HKSample+ORKJSONDictionary.h"
-#import "CMMotionActivity+ORKJSONDictionary.h"
+// #import "HKSample+ORKJSONDictionary.h"
+// #import "CMMotionActivity+ORKJSONDictionary.h"
 #import "ORKHealthSampleQueryOperation.h"
 #import "ORKMotionActivityQueryOperation.h"
-#import <CoreMotion/CoreMotion.h>
+// #import <CoreMotion/CoreMotion.h>
 
 
 static NSString *const ItemsKey = @"items";

@@ -33,7 +33,7 @@
 #import "ORKRequestPermissionButton.h"
 #import "ORKHelpers_Internal.h"
 
-@import CoreMotion;
+// @import CoreMotion;
 
 static NSString *const Symbol = @"arrow.right.arrow.left.circle";
 static const uint32_t IconLightTintColor = 0xEF72D8;

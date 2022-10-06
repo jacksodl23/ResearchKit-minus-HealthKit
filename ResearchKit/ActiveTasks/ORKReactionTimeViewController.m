@@ -45,7 +45,7 @@
 #import "ORKHelpers_Internal.h"
 
 #import <AudioToolbox/AudioServices.h>
-#import <CoreMotion/CMDeviceMotion.h>
+// #import <CoreMotion/CMDeviceMotion.h>
 
 
 @implementation ORKReactionTimeViewController {

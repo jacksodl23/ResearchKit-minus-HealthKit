@@ -30,7 +30,7 @@
 
 
 #import "ORKMotionActivityQueryOperation.h"
-#import <CoreMotion/CoreMotion.h>
+// #import <CoreMotion/CoreMotion.h>
 #import "ORKCollector.h"
 #import "ORKHelpers_Internal.h"
 #import "ORKCollector_Internal.h"

@@ -29,8 +29,8 @@
  */
 
 
-@import AVFoundation;
-@import Speech;
+// @import AVFoundation;
+// @import Speech;
 
 @protocol ORKSpeechRecognitionDelegate
 

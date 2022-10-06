@@ -32,7 +32,6 @@
 #import "ORKHealthKitPermissionType.h"
 #import "ORKHelpers_Internal.h"
 #import "ORKRequestPermissionView.h"
-#import <HealthKit/HealthKit.h>
 
 static NSString *const Symbol = @"heart.fill";
 static uint32_t const IconTintColor = 0xFF5E5E;

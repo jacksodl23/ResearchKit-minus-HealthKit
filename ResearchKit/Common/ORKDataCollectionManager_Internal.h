@@ -30,12 +30,12 @@
 
 
 #import "ORKDataCollectionManager.h"
-#import <CoreMotion/CoreMotion.h>
+// #import <CoreMotion/CoreMotion.h>
 
 
 @interface ORKDataCollectionManager ()
 
-@property (nonatomic, strong, readonly) HKHealthStore *healthStore;
+// @property (nonatomic, strong, readonly) HKHealthStore *healthStore;
 
 @property (nonatomic, strong, readonly) CMMotionActivityManager *activityManager;
 

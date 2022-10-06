@@ -30,7 +30,7 @@
 
 
 @import UIKit;
-@import AVFoundation;
+// @import AVFoundation;
 #import <ResearchKit/ORKRecorder.h>
 
 

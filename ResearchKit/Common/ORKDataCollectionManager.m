@@ -33,7 +33,6 @@
 #import "ORKCollector_Internal.h"
 #import "ORKOperation.h"
 #import "ORKHelpers_Internal.h"
-#import <HealthKit/HealthKit.h>
 
 
 // The file names for persisting the state of our collectors

@@ -32,8 +32,8 @@
 @import XCTest;
 @import ResearchKit.Private;
 
-@import CoreLocation;
-@import CoreMotion;
+// @import CoreLocation;
+// @import CoreMotion;
 
 
 @interface ORKMockLocationManager : CLLocationManager

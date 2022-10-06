@@ -30,7 +30,7 @@
 
 
 #import <ResearchKit/ORKResult.h>
-@import CoreLocation;
+// @import CoreLocation;
 @import Contacts;
 
 NS_ASSUME_NONNULL_BEGIN

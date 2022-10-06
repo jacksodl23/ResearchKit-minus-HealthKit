@@ -31,7 +31,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
-#import <CoreMotion/CoreMotion.h>
+// #import <CoreMotion/CoreMotion.h>
 
 
 NS_ASSUME_NONNULL_BEGIN

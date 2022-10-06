@@ -35,9 +35,9 @@
 
 #import "ORKRecorder_Internal.h"
 
-#import "CLLocation+ORKJSONDictionary.h"
+// #import "CLLocation+ORKJSONDictionary.h"
 
-#import <CoreLocation/CoreLocation.h>
+// #import <CoreLocation/CoreLocation.h>
 
 
 @interface ORKLocationRecorder () <CLLocationManagerDelegate> {
