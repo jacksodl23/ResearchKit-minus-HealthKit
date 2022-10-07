@@ -46,15 +46,15 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface ORKLocation ()
+// @interface ORKLocation ()
 
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+/* - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
                             region:(nullable CLCircularRegion *)region
                          userInput:(nullable NSString *)userInput
-                     postalAddress:(nullable CNPostalAddress *)postalAddress;
+                     postalAddress:(nullable CNPostalAddress *)postalAddress; */
 
-- (instancetype)initWithPlacemark:(CLPlacemark *)placemark userInput:(NSString *)userInput;
+// - (instancetype)initWithPlacemark:(CLPlacemark *)placemark userInput:(NSString *)userInput;
 
-@end
+// @end
 
 NS_ASSUME_NONNULL_END

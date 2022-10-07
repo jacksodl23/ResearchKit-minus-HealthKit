@@ -32,14 +32,14 @@
 #import "ORKVideoCaptureStep.h"
 #import "ORKHelpers_Internal.h"
 #import "ORKStep_Private.h"
-#import "ORKVideoCaptureStepViewController.h"
+// #import "ORKVideoCaptureStepViewController.h"
 
 
 @implementation ORKVideoCaptureStep
 
-+ (Class)stepViewControllerClass {
+/* + (Class)stepViewControllerClass {
     return [ORKVideoCaptureStepViewController class];
-}
+} */
 
 - (instancetype)initWithIdentifier:(NSString *)identifier {
     self = [super initWithIdentifier:identifier];

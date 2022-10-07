@@ -422,48 +422,48 @@ static NSString *const RegionIdentifierKey = @"region.identifier"; */
 
 @implementation ORKLocationQuestionResult
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+/* - (void)encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
     ORK_ENCODE_OBJ(aCoder, locationAnswer);
-}
+} */
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+/* - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         ORK_DECODE_OBJ_CLASS(aDecoder, locationAnswer, ORKLocation);
     }
     return self;
-}
+} */
 
 + (BOOL)supportsSecureCoding {
     return YES;
 }
 
-- (BOOL)isEqual:(id)object {
+/* - (BOOL)isEqual:(id)object {
     BOOL isParentSame = [super isEqual:object];
     
     __typeof(self) castObject = object;
     return (isParentSame && ORKEqualObjects(self.locationAnswer, castObject.locationAnswer));
-}
+} */
 
-- (instancetype)copyWithZone:(NSZone *)zone {
+/* - (instancetype)copyWithZone:(NSZone *)zone {
     ORKLocationQuestionResult *result = [super copyWithZone:zone];
     result->_locationAnswer = [self.locationAnswer copy];
     return result;
-}
+} */
 
-+ (Class)answerClass {
+/* + (Class)answerClass {
     return [ORKLocation class];
-}
+} */
 
-- (void)setAnswer:(id)answer {
+/* - (void)setAnswer:(id)answer {
     answer = [self validateAnswer:answer];
     self.locationAnswer = [answer copy];
-}
+} */
 
-- (id)answer {
+/* - (id)answer {
     return self.locationAnswer;
-}
+} */
 
 @end
 

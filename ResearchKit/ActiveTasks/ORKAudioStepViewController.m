@@ -38,7 +38,7 @@
 #import "ORKVerticalContainerView.h"
 
 #import "ORKActiveStepViewController_Internal.h"
-#import "ORKAudioRecorder.h"
+// #import "ORKAudioRecorder.h"
 
 #import "ORKAudioStep.h"
 #import "ORKStep_Private.h"
@@ -57,7 +57,7 @@
 
 @implementation ORKAudioStepViewController {
     ORKAudioContentView *_audioContentView;
-    ORKAudioRecorder *_audioRecorder;
+    // ORKAudioRecorder *_audioRecorder;
     ORKActiveStepTimer *_timer;
     NSError *_audioRecorderError;
 }
@@ -97,7 +97,7 @@
 } */
 
 - (void)recordersDidChange {
-    ORKAudioRecorder *audioRecorder = nil;
+    /* ORKAudioRecorder *audioRecorder = nil;
     for (ORKRecorder *recorder in self.recorders) {
         if ([recorder isKindOfClass:[ORKAudioRecorder class]]) {
             audioRecorder = (ORKAudioRecorder *)recorder;
@@ -105,7 +105,7 @@
         }
     }
     _audioRecorder = audioRecorder;
-    // [self audioRecorderDidChange];
+    [self audioRecorderDidChange]; */
 }
 
 - (ORKAudioStep *)audioStep {

@@ -35,25 +35,25 @@
 #import "ORKVideoCaptureStep.h"
 #import "ORKHelpers_Internal.h"
 
-#import <AVFoundation/AVFoundation.h>
+// #import <AVFoundation/AVFoundation.h>
 
 
-@interface ORKVideoCaptureStepViewController () <ORKVideoCaptureViewDelegate, AVCaptureFileOutputRecordingDelegate>
+@interface ORKVideoCaptureStepViewController () <ORKVideoCaptureViewDelegate>
 
 @end
 
 
-@implementation ORKVideoCaptureStepViewController {
+/* @implementation ORKVideoCaptureStepViewController {
     ORKVideoCaptureView *_videoCaptureView;
     ORKVideoCaptureStep *_videoCaptureStep;
     dispatch_queue_t _sessionQueue;
-    AVCaptureSession *_captureSession;
-    AVCaptureMovieFileOutput *_movieFileOutput;
+    // AVCaptureSession *_captureSession;
+    // AVCaptureMovieFileOutput *_movieFileOutput;
     NSURL *_fileURL;
     BOOL _recording;
-}
+} */
 
-- (instancetype)initWithStep:(ORKStep *)step result:(ORKResult *)result {
+/* - (instancetype)initWithStep:(ORKStep *)step result:(ORKResult *)result {
     self = [self initWithStep:step];
     if (self) {
         ORKStepResult *stepResult = (ORKStepResult *)result;
@@ -67,17 +67,17 @@
         }
     }
     return self;
-}
+} */
 
-- (instancetype)initWithStep:(ORKStep *)step {
+/* - (instancetype)initWithStep:(ORKStep *)step {
     self = [super initWithStep:step];
     if (self) {
         self.fileURL = nil;
     }
     return self;
-}
+} */
 
-- (void)setUpConstraints {
+/* - (void)setUpConstraints {
     NSMutableArray *constraints = [NSMutableArray new];
     
     _videoCaptureView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -115,30 +115,30 @@
                                        ]];
 
     [NSLayoutConstraint activateConstraints:constraints];
-}
+} */
 
-- (void)setContinueButtonItem:(UIBarButtonItem *)continueButtonItem {
+/* - (void)setContinueButtonItem:(UIBarButtonItem *)continueButtonItem {
     [super setContinueButtonItem:continueButtonItem];
     _videoCaptureView.continueButtonItem = continueButtonItem;
-}
+} */
 
-- (void)setSkipButtonItem:(UIBarButtonItem *)skipButtonItem {
+/* - (void)setSkipButtonItem:(UIBarButtonItem *)skipButtonItem {
     [super setSkipButtonItem:skipButtonItem];
     _videoCaptureView.skipButtonItem = skipButtonItem;
-}
+} */
 
-- (void)setCancelButtonItem:(UIBarButtonItem *)cancelButtonItem {
+/* - (void)setCancelButtonItem:(UIBarButtonItem *)cancelButtonItem {
     [super setCancelButtonItem:cancelButtonItem];
     _videoCaptureView.cancelButtonItem = cancelButtonItem;
-}
+} */
 
-- (void)stepDidChange {
+/* - (void)stepDidChange {
     [super stepDidChange];
     
     if (self.step && [self isViewLoaded]) {
         [_videoCaptureView removeFromSuperview];
         _videoCaptureView = nil;
-        _movieFileOutput = nil;
+        // _movieFileOutput = nil;
         
         _videoCaptureView = [[ORKVideoCaptureView alloc] initWithFrame:CGRectZero];
         _videoCaptureView.videoCaptureStep = (ORKVideoCaptureStep *)self.step;
@@ -148,7 +148,7 @@
         
         
         _videoCaptureStep = (ORKVideoCaptureStep *)self.step;
-        _movieFileOutput = [AVCaptureMovieFileOutput new];
+        // _movieFileOutput = [AVCaptureMovieFileOutput new];
         
         [self setUpConstraints];
         
@@ -161,14 +161,14 @@
             [self queue_SetupCaptureSession];
         });
     }
-}
+} */
 
-- (void)viewDidLoad {
+/* - (void)viewDidLoad {
     [super viewDidLoad];
     [self stepDidChange];
-}
+} */
 
-- (void)viewWillAppear:(BOOL)animated {
+/* - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     // If we don't already have a captured image, then start running the capture session.
@@ -180,8 +180,9 @@
         [self setFileURL:_fileURL];
     }
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
+*/
+ 
+/* - (void)viewWillDisappear:(BOOL)animated {
     // If the capture session is running, stop it
     if (_captureSession.isRunning) {
         dispatch_async(_sessionQueue, ^{
@@ -192,23 +193,23 @@
     [_videoCaptureView.playerViewController.player pause];
     
     [super viewWillDisappear:animated];
-}
+} */
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+/* - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
     if (_videoCaptureView) {
         [_videoCaptureView orientationDidChange];
     }
-}
+} */
 
-- (void)queue_SetupCaptureSession {
+// - (void)queue_SetupCaptureSession {
     // Create the session
-    _captureSession = [AVCaptureSession new];
-    [_captureSession beginConfiguration];
+    // _captureSession = [AVCaptureSession new];
+    // [_captureSession beginConfiguration];
         
     // Get the camera
-    AVCaptureDevice *device;
+    /* AVCaptureDevice *device;
     
     AVCaptureDeviceDiscoverySession *discoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:_videoCaptureStep.devicePosition ? : AVCaptureDevicePositionBack];
 
@@ -259,41 +260,42 @@
     [_captureSession commitConfiguration];
     
     _videoCaptureView.session = _captureSession;
-}
+     */
+// }
 
-- (void)handleError:(NSError *)error {
+// - (void)handleError:(NSError *)error {
     // Shut down the session, if running
-    if (_captureSession.isRunning) {
+    /* if (_captureSession.isRunning) {
         ORKStrongTypeOf(_captureSession) strongCaptureSession = _captureSession;
         dispatch_async(_sessionQueue, ^{
             [strongCaptureSession stopRunning];
         });
-    }
+    } */
     
     // Reset the state to before the capture session was setup.  Order here is important
-    _captureSession = nil;
-    _movieFileOutput = nil;
-    _videoCaptureView.session = nil;
-    _videoCaptureView.videoFileURL = nil;
-    _fileURL = nil;
+    // _captureSession = nil;
+    // _movieFileOutput = nil;
+    // _videoCaptureView.session = nil;
+    // _videoCaptureView.videoFileURL = nil;
+    // _fileURL = nil;
     
     // Show the error in the image capture view
-    _videoCaptureView.error = error;
-}
+    // _videoCaptureView.error = error;
+// }
 
-- (void)setFileURL:(NSURL *)fileURL {
+/* - (void)setFileURL:(NSURL *)fileURL {
     _fileURL = fileURL;
     _videoCaptureView.videoFileURL = fileURL;
     
     [self notifyDelegateOnResultChange];
-}
+} */
 
-- (void)setRecording:(BOOL)recording {
+/* - (void)setRecording:(BOOL)recording {
     _recording = recording;
     _videoCaptureView.recording = recording;
-}
+} */
 
-- (ORKStepResult *)result {
+/* - (ORKStepResult *)result {
     ORKStepResult *stepResult = [super result];
     NSDate *now = stepResult.endDate;
     
@@ -306,14 +308,15 @@
     [results addObject:fileResult];
     stepResult.results = [results copy];
     return stepResult;
-}
+} */
 
 
 #pragma mark - ORKVideoCaptureViewDelegate
 
+/*
 - (void)retakePressed:(void (^)(void))handler {
     dispatch_async(_sessionQueue, ^{
-        [_captureSession startRunning];
+        // [_captureSession startRunning];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.fileURL = nil;
             if (handler) {
@@ -332,7 +335,7 @@
         if ([fileManager fileExistsAtPath:_fileURL.path]) {
             [fileManager removeItemAtURL:_fileURL error:nil];
         }
-        AVCaptureConnection *connection = [_movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+        // AVCaptureConnection *connection = [_movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
         if (connection.isActive) {
             [_movieFileOutput startRecordingToOutputFileURL:_fileURL
                                           recordingDelegate:self];
@@ -386,10 +389,11 @@
          connections[0].videoOrientation = videoOrientation;
     }
 }
-
+*/
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 
+/*
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections {
     self.recording = YES;
 }
@@ -407,5 +411,6 @@
         UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, ORKLocalizedString(@"AX_VIDEO_CAPTURE_COMPLETE", nil));
     }
 }
+ */
 
-@end
+// @end

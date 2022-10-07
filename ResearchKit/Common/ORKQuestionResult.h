@@ -188,7 +188,7 @@ ORK_CLASS_AVAILABLE
 /**
  The answer representing the coordinate and the address of a specific location.
  */
-@property (nonatomic, copy, nullable) ORKLocation *locationAnswer;
+// @property (nonatomic, copy, nullable) ORKLocation *locationAnswer;
 
 @end
 

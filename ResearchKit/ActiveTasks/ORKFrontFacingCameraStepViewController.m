@@ -28,7 +28,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <AVFoundation/AVFoundation.h>
+// #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 #import <CoreImage/CoreImage.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -47,7 +47,7 @@
 #import "ORKStepContainerView_Private.h"
 #import "ORKStepViewController_Internal.h"
 
-@interface ORKFrontFacingCameraStepViewController () <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface ORKFrontFacingCameraStepViewController ()
 
 @property (nonatomic, strong) ORKFrontFacingCameraStepContentView *contentView;
 
@@ -65,8 +65,8 @@
     
     NSString *_savedFileName;
     
-    AVCaptureDevice *_frontCameraCaptureDevice;
-    AVCaptureSession *_captureSession;
+    // AVCaptureDevice *_frontCameraCaptureDevice;
+    // AVCaptureSession *_captureSession;
     
     NSInteger retryCount;
 }
@@ -88,7 +88,7 @@
     
     [self setupContentView];
     [self setupConstraints];
-    [self startSession];
+    // [self startSession];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -99,12 +99,12 @@
 
 - (void)handleError:(NSError *)error {
     // Shut down the session, if running
-    if (_captureSession.isRunning) {
+    /* if (_captureSession.isRunning) {
         [_captureSession stopRunning];
-    }
+    } */
     
     // Reset the state to before the capture session was setup.  Order here is important
-    _captureSession = nil;
+    // _captureSession = nil;
     _movieFileOutput = nil;
     _tempOutputURL = nil;
     _savedFileURL = nil;
@@ -141,11 +141,11 @@
     switch (event)
     {
         case ORKFrontFacingCameraStepContentViewEventStartRecording:
-            [self startVideoRecording];
+            // [self startVideoRecording];
             break;
             
         case ORKFrontFacingCameraStepContentViewEventStopRecording:
-            [self stopVideoRecording];
+            // [self stopVideoRecording];
             break;
             
         case ORKFrontFacingCameraStepContentViewEventReviewRecording:
@@ -166,7 +166,7 @@
             
         case ORKFrontFacingCameraStepContentViewEventSubmitRecording:
         {
-            [self submitVideo];
+            // [self submitVideo];
             break;
         }
         case ORKFrontFacingCameraStepContentViewEventError:
@@ -183,7 +183,7 @@
     [[_contentView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor] setActive:YES];
 }
 
-- (void)startSession
+/* - (void)startSession
 {
     _captureSession = [AVCaptureSession new];
     
@@ -261,9 +261,9 @@
     }
     
     [_contentView layoutSubviews];
-}
+} */
 
-- (void)startVideoRecording {
+/* - (void)startVideoRecording {
     if (![_movieFileOutput isRecording]) {
          
         AVCaptureConnection *movieFileOutputConnection = [_movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
@@ -284,15 +284,15 @@
     }
     
     [_contentView layoutSubviews];
-}
+} */
 
-- (void)stopVideoRecording {
+/* - (void)stopVideoRecording {
     if (_movieFileOutput && [_movieFileOutput isRecording]) {
         [_movieFileOutput stopRecording];
     }
-}
+} */
 
-- (void)submitVideo {
+/* - (void)submitVideo {
     if ([self tempVideoFileExists])
     {
         //Save video to permanant file
@@ -313,7 +313,7 @@
             [self finish];
         }
     }
-}
+} */
 
 - (BOOL)tempVideoFileExists {
     if (_tempOutputURL && [NSFileManager.defaultManager fileExistsAtPath:_tempOutputURL.relativePath]) {
@@ -358,6 +358,7 @@
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate methods
 
+/*
 - (void)captureOutput:(AVCaptureFileOutput *)output didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray<AVCaptureConnection *> *)connections {
     
     [_contentView startTimerWithMaximumRecordingLimit:_frontFacingCameraStep.maximumRecordingLimit];
@@ -376,5 +377,6 @@
         }
     }
 }
+ */
 
 @end

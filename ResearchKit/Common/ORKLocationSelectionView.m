@@ -53,7 +53,7 @@
 
 static const NSString *FormattedAddressLines = @"FormattedAddressLines";
 
-@interface ORKLocationSelectionView () <UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+@interface ORKLocationSelectionView () <UITextFieldDelegate, MKMapViewDelegate>
 
 @property (nonatomic, strong) NSLayoutConstraint *mapViewHeightConstraint;
 @property (nonatomic, strong, readwrite) ORKAnswerTextField *textField;
@@ -80,7 +80,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
 
 
 @implementation ORKLocationSelectionView {
-    CLLocationManager *_locationManager;
+    // CLLocationManager *_locationManager;
     BOOL _userLocationNeedsUpdate;
     MKCoordinateRegion _initalCoordinateRegion;
     BOOL _setInitialCoordinateRegion;
@@ -175,8 +175,8 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     annotation.coordinate = touchMapCoordinate;
     [_mapView addAnnotation:annotation];
     
-    ORKLocation *pinLocation = [[ORKLocation alloc] initWithCoordinate:touchMapCoordinate region:nil userInput:nil postalAddress:nil];
-    [self setAnswer:pinLocation];
+    // ORKLocation *pinLocation = [[ORKLocation alloc] initWithCoordinate:touchMapCoordinate region:nil userInput:nil postalAddress:nil];
+    // [self setAnswer:pinLocation];
 }
 
 - (void)setUpConstraints {
@@ -276,7 +276,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     }
 }
 
-- (void)loadCurrentLocationIfNecessary {
+/* - (void)loadCurrentLocationIfNecessary {
     if (_useCurrentLocation) {
         CLAuthorizationStatus status = kCLAuthorizationStatusNotDetermined;
         
@@ -297,7 +297,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
             [_locationManager requestWhenInUseAuthorization];
         }
     }
-}
+} */
 
 - (void)geocodeAndDisplay:(NSString *)string {
     
@@ -314,13 +314,13 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
             [self notifyDelegateOfError:error];
             [strongSelf setAnswer:ORKNullAnswerValue()];
         } else {
-            CLPlacemark *placemark = [placemarks lastObject];
-            [strongSelf setAnswer:[[ORKLocation alloc] initWithPlacemark:placemark userInput:string]];
+            // CLPlacemark *placemark = [placemarks lastObject];
+            // [strongSelf setAnswer:[[ORKLocation alloc] initWithPlacemark:placemark userInput:string]];
         }
     }];
 }
 
-- (void)reverseGeocodeAndDisplay:(ORKLocation *)location {
+/* - (void)reverseGeocodeAndDisplay:(ORKLocation *)location {
     
     if (location == nil) {
         [self setAnswer:ORKNullAnswerValue()];
@@ -329,7 +329,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     
     // CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     // ORKWeakTypeOf(self) weakSelf = self;
-    /* CLLocation *cllocation = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
+    CLLocation *cllocation = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
     [geocoder reverseGeocodeLocation:cllocation completionHandler:^(NSArray *placemarks, NSError *error) {
         ORKStrongTypeOf(weakSelf) strongSelf = weakSelf;
         if (error) {
@@ -341,14 +341,14 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
                                                                userInput:location.userInput ? : placemark.ork_addressLine]
                         updateMap:YES];
         }
-    }]; */
-}
+    }];
+} */
 
-- (void)setAnswer:(ORKLocation *)answer {
+/* - (void)setAnswer:(ORKLocation *)answer {
     [self setAnswer:answer updateMap:YES];
-}
+} */
 
-- (void)setAnswer:(ORKLocation *)answer updateMap:(BOOL)updateMap {
+/* - (void)setAnswer:(ORKLocation *)answer updateMap:(BOOL)updateMap {
     
     BOOL isAnswerClassORKLocation = [[answer class] isSubclassOfClass:[ORKLocation class]];
     _answer = (isAnswerClassORKLocation || answer == ORKNullAnswerValue()) ? answer : nil;
@@ -363,11 +363,11 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     
     if (location) {
         
-        /* if (!location.userInput || !location.region |!location.postalAddress) {
+        if (!location.userInput || !location.region |!location.postalAddress) {
             // redo geo decoding if any of them is missing
             [self reverseGeocodeAndDisplay:location];
             return;
-        } */
+        }
         
         if (location.userInput) {
             _textField.text = location.userInput;
@@ -381,15 +381,15 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
     if ([_delegate respondsToSelector:@selector(locationSelectionViewDidChange:)]) {
         [_delegate locationSelectionViewDidChange:self];
     }
-}
+} */
 
-- (void)updateMapWithLocation:(ORKLocation *)location {
+/* - (void)updateMapWithLocation:(ORKLocation *)location {
     
     // MKPlacemark *placemark = location ? [[MKPlacemark alloc] initWithCoordinate:location.coordinate postalAddress:location.postalAddress] : nil;
     
     [_mapView removeAnnotations:_mapView.annotations];
     
-    /* if (placemark) {
+    if (placemark) {
         [_mapView addAnnotation:placemark];
         CLLocationDistance span = MAX(200, location.region.radius);
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.region.center, span, span);
@@ -398,8 +398,8 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
         if (_setInitialCoordinateRegion) {
             [self setMapRegion:_initalCoordinateRegion];
         }
-    } */
-}
+    }
+} */
 
 - (void)setMapRegion:(MKCoordinateRegion)region {
     if (!_setInitialCoordinateRegion) {
@@ -441,18 +441,18 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
 
 # pragma mark CLLocationManagerDelegate
 
-- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
+/* - (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
         [self loadCurrentLocationIfNecessary];
-}
+} */
 
 #pragma mark MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     if (_userLocationNeedsUpdate) {
-        [self reverseGeocodeAndDisplay:[[ORKLocation alloc] initWithCoordinate:userLocation.location.coordinate
+        /* [self reverseGeocodeAndDisplay:[[ORKLocation alloc] initWithCoordinate:userLocation.location.coordinate
                                                                         region:nil
                                                                      userInput:nil
-                                                                 postalAddress:nil]];
+                                                                 postalAddress:nil]]; */
         _userLocationNeedsUpdate = NO;
     }
 }
@@ -480,7 +480,7 @@ static const NSString *FormattedAddressLines = @"FormattedAddressLines";
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     // Clear answer to prevent user continue with invalid answer.
     if ( NO == ORKIsAnswerEmpty(_answer) ) {
-        [self setAnswer:ORKNullAnswerValue() updateMap:NO];
+        // [self setAnswer:ORKNullAnswerValue() updateMap:NO];
     }
     
     return YES;

@@ -35,34 +35,34 @@
 // @import CoreLocation;
 // @import CoreMotion;
 
-
+/*
 @interface ORKMockLocationManager : CLLocationManager
 
 @end
+*/
 
-
-@implementation ORKMockLocationManager
+/* @implementation ORKMockLocationManager
 
 - (void)setPausesLocationUpdatesAutomatically:(BOOL)pausesLocationUpdatesAutomatically {
     
 }
 
 @end
-
+*/
 
 @interface ORKMockLocationRecorder : ORKLocationRecorder
 
 @end
 
 
-@implementation ORKMockLocationRecorder
+/* @implementation ORKMockLocationRecorder
 
 - (CLLocationManager *)createLocationManager {
     return [[ORKMockLocationManager alloc] init];
 }
 
 @end
-
+*/
 
 @interface ORKMockTouch : UITouch
 
@@ -397,7 +397,7 @@ static const NSInteger kNumberOfSamples = 5;
     _items = items;
 }
 
-- (void)testLocationRecorder {
+/* - (void)testLocationRecorder {
     
     ORKLocationRecorder *recorder = (ORKLocationRecorder *)[self createRecorder:[[ORKLocationRecorderConfiguration alloc] initWithIdentifier:@"location"]];
     XCTAssertTrue([recorder isKindOfClass:[ORKLocationRecorder class]], @"");
@@ -447,7 +447,7 @@ static const NSInteger kNumberOfSamples = 5;
         XCTAssertTrue(ork_doubleEqual(latitude, ((NSNumber *)sample[@"coordinate"][@"latitude"]).doubleValue), @"");
         XCTAssertTrue(ork_doubleEqual(longitude, ((NSNumber *)sample[@"coordinate"][@"longitude"]).doubleValue), @"");
     }
-}
+} */
 
 - (void)testAccelerometerRecorder {
     
@@ -614,14 +614,14 @@ static const NSInteger kNumberOfSamples = 5;
     }
 }
 
-- (void)testAudioRecorder {
+/* - (void)testAudioRecorder {
     
     ORKAudioRecorderConfiguration *recorderConfiguration = [[ORKAudioRecorderConfiguration alloc] initWithIdentifier:@"audio" recorderSettings:@{}];
     Class recorderClass = [ORKAudioRecorder class];
     ORKAudioRecorder *recorder = (ORKAudioRecorder *)[self createRecorder:recorderConfiguration];
     
     XCTAssertTrue([recorder isKindOfClass:recorderClass], @"");
-}
+} */
 
 /* - (void)testHealthQuantityTypeRecorder {
     

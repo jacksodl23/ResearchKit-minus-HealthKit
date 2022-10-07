@@ -303,13 +303,13 @@
 }
 #pragma clang diagnostic pop
 
-- (ORKRecorder *)recorderForStep:(ORKStep *)step
+/* - (ORKRecorder *)recorderForStep:(ORKStep *)step
                  outputDirectory:(NSURL *)outputDirectory {
     return [[ORKAudioRecorder alloc] initWithIdentifier:self.identifier
                                        recorderSettings:self.recorderSettings
                                                    step:step
                                         outputDirectory:outputDirectory];
-}
+} */
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];

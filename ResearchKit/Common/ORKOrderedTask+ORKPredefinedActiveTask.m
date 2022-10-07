@@ -49,7 +49,7 @@
 #import "ORKAmslerGridStep.h"
 #import "ORKAnswerFormat_Internal.h"
 #import "ORKAudioLevelNavigationRule.h"
-#import "ORKAudioRecorder.h"
+// #import "ORKAudioRecorder.h"
 #import "ORKAudioStep.h"
 #import "ORKCompletionStep.h"
 #import "ORKCountdownStep.h"
@@ -601,8 +601,8 @@ NSString *const ORKAudioTooLoudStepIdentifier = @"audio.tooloud";
         step.title = ORKLocalizedString(@"AUDIO_TASK_TITLE", nil);
 
         // Collect audio during the countdown step too, to provide a baseline.
-        step.recorderConfigurations = @[[[ORKAudioRecorderConfiguration alloc] initWithIdentifier:ORKAudioRecorderIdentifier
-                                                                                 recorderSettings:recordingSettings]];
+        /* step.recorderConfigurations = @[[[ORKAudioRecorderConfiguration alloc] initWithIdentifier:ORKAudioRecorderIdentifier
+                                                                                 recorderSettings:recordingSettings]]; */
         
         // If checking the sound level then add text indicating that's what is happening
         if (checkAudioLevel) {
@@ -625,8 +625,8 @@ NSString *const ORKAudioTooLoudStepIdentifier = @"audio.tooloud";
         ORKAudioStep *step = [[ORKAudioStep alloc] initWithIdentifier:ORKAudioStepIdentifier];
         step.title = ORKLocalizedString(@"AUDIO_TASK_TITLE", nil);
         step.text = shortSpeechInstruction ? : ORKLocalizedString(@"AUDIO_INSTRUCTION", nil);
-        step.recorderConfigurations = @[[[ORKAudioRecorderConfiguration alloc] initWithIdentifier:ORKAudioRecorderIdentifier
-                                                                                 recorderSettings:recordingSettings]];
+        /* step.recorderConfigurations = @[[[ORKAudioRecorderConfiguration alloc] initWithIdentifier:ORKAudioRecorderIdentifier
+                                                                                 recorderSettings:recordingSettings]]; */
         step.stepDuration = duration;
         step.shouldContinueOnFinish = YES;
         

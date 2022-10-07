@@ -40,9 +40,9 @@
 
 @implementation ORKImageCaptureStep
 
-+ (Class)stepViewControllerClass {
+/* + (Class)stepViewControllerClass {
     return [ORKImageCaptureStepViewController class];
-}
+} */
 
 - (instancetype)initWithIdentifier:(NSString *)identifier {
     self = [super initWithIdentifier:identifier];

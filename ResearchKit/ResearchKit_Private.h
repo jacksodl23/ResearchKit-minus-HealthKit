@@ -102,7 +102,7 @@
 #import <ResearchKit/ORKFitnessStepViewController.h>
 #import <ResearchKit/ORKHolePegTestPlaceStepViewController.h>
 #import <ResearchKit/ORKHolePegTestRemoveStepViewController.h>
-#import <ResearchKit/ORKImageCaptureStepViewController.h>
+// #import <ResearchKit/ORKImageCaptureStepViewController.h>
 #import <ResearchKit/ORKPasscodeStepViewController.h>
 #import <ResearchKit/ORKPSATStepViewController.h>
 #import <ResearchKit/ORKReviewStepViewController.h>
@@ -119,7 +119,7 @@
 #import <ResearchKit/ORKLearnMoreStepViewController.h>
 
 #import <ResearchKit/ORKAccelerometerRecorder.h>
-#import <ResearchKit/ORKAudioRecorder.h>
+// #import <ResearchKit/ORKAudioRecorder.h>
 #import <ResearchKit/ORKStreamingAudioRecorder.h>
 #import <ResearchKit/ORKDeviceMotionRecorder.h>
 #import <ResearchKit/ORKHealthQuantityTypeRecorder.h>
