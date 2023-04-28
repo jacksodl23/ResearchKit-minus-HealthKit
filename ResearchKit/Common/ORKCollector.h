@@ -30,7 +30,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import <ResearchKit/ORKErrors.h>
+// #import <HealthKit/HealthKit.h>
 #import <ResearchKit/ORKDefines.h>
 
 

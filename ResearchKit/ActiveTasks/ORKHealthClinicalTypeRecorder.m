@@ -214,7 +214,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         ORK_DECODE_OBJ_CLASS(aDecoder, healthClinicalType, HKClinicalType);
-        ORK_DECODE_OBJ(aDecoder, healthFHIRResourceType);
+        ORK_DECODE_OBJ_CLASS(aDecoder, healthFHIRResourceType, NSString);
     }
     return self;
 }
