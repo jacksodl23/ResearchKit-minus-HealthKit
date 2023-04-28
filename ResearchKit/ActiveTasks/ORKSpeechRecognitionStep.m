@@ -28,7 +28,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+/*
 #import "ORKSpeechRecognitionStep.h"
 
 #import "ORKSpeechRecognitionStepViewController.h"
@@ -111,4 +111,4 @@
 }
 
 @end
-
+*/

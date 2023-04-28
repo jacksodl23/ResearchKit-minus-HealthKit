@@ -110,10 +110,10 @@ ORKQuestionStepPresentationStyle const ORKQuestionStepPresentationStylePlatter =
     return [impliedAnswerFormat isKindOfClass:[ORKTextAnswerFormat class]] && ![(ORKTextAnswerFormat *)impliedAnswerFormat multipleLines];
 }
 
-- (NSSet<HKObjectType *> *)requestedHealthKitTypesForReading {
+/* - (NSSet<HKObjectType *> *)requestedHealthKitTypesForReading {
     HKObjectType *objType = [[self answerFormat] healthKitObjectTypeForAuthorization];
     return (objType != nil) ? [NSSet setWithObject:objType] : nil;
-}
+} */
 
 #endif
 
@@ -309,6 +309,5 @@ ORKQuestionStepPresentationStyle const ORKQuestionStepPresentationStylePlatter =
     
     return NO;
 }
- */
 
 @end

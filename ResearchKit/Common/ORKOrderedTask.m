@@ -391,7 +391,7 @@
 
 #endif
 
-- (NSSet *)requestedHealthKitTypesForReading {
+/*- (NSSet *)requestedHealthKitTypesForReading {
     NSMutableSet *healthTypes = [NSMutableSet set];
     for (ORKStep *step in self.steps) {
         NSSet *stepSet = [step requestedHealthKitTypesForReading];

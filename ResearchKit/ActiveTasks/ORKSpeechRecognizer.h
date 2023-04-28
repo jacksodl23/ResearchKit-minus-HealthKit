@@ -73,11 +73,6 @@
 
 /**
  Asks the user to grant your app permission to perform speech recognition.
- */
-+ (void)requestAuthorization;
-
-/**
- Asks the user to grant your app permission to perform speech recognition.
  
  @param handler A block to execute after the authorization attempt finishes. Not guaranteed to run on the apps main dispatch queue.
  
@@ -100,7 +95,7 @@
  
  @param audioBuffer A buffer of audio
  */
-- (void)addAudio:(AVAudioPCMBuffer *)audioBuffer;
+// - (void)addAudio:(AVAudioPCMBuffer *)audioBuffer;
 
 /**
  Indicates that the audio source is finished and no more audio will be appended to the

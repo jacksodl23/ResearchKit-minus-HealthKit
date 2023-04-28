@@ -28,7 +28,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+/*
 @import Foundation;
 #import <ResearchKit/ORKActiveStep.h>
 
@@ -38,16 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 ORK_CLASS_AVAILABLE
 @interface ORKSpeechRecognitionStep : ORKActiveStep
 
-/**
- The language for speech recognition
- 
- The default value of this property is @"en-US".
- */
 @property (nonatomic, copy) ORKSpeechRecognizerLocale speechRecognizerLocale;
 
-/**
- The property to hide transcription as the user speaks. 
- */
 @property (nonatomic) BOOL shouldHideTranscript;
 
 - (instancetype) initWithIdentifier:(NSString *)identifier image:(nullable UIImage *)image text:(nullable NSString *)text;
@@ -59,4 +51,4 @@ ORK_CLASS_AVAILABLE
 @end
 
 NS_ASSUME_NONNULL_END
-
+*/

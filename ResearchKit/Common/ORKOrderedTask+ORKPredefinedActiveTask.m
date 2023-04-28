@@ -150,8 +150,8 @@ void ORKStepArrayAddStep(NSMutableArray *array, ORKStep *step) {
 
 + (NSArray<ORKRecorderConfiguration*>*)makeRecorderConfigurationsWithOptions:(ORKPredefinedTaskOption)options {
 
-    HKUnit *bpmUnit = [[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]];
-    HKQuantityType *heartRateType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
+    // HKUnit *bpmUnit = [[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]];
+    // HKQuantityType *heartRateType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
 
     NSMutableArray<ORKRecorderConfiguration*> *recorderConfigurations = [NSMutableArray arrayWithCapacity:5];
 
@@ -169,10 +169,10 @@ void ORKStepArrayAddStep(NSMutableArray *array, ORKStep *step) {
     if (!(ORKPredefinedTaskOptionExcludeLocation & options)) {
         [recorderConfigurations addObject:[[ORKLocationRecorderConfiguration alloc] initWithIdentifier:ORKLocationRecorderIdentifier]];
     }
-    if (!(ORKPredefinedTaskOptionExcludeHeartRate & options)) {
+    /* if (!(ORKPredefinedTaskOptionExcludeHeartRate & options)) {
         [recorderConfigurations addObject:[[ORKHealthQuantityTypeRecorderConfiguration alloc] initWithIdentifier:ORKHeartRateRecorderIdentifier
                                                                                               healthQuantityType:heartRateType unit:bpmUnit]];
-    }
+    } */
     return [recorderConfigurations copy];
 }
 
@@ -772,7 +772,6 @@ NSString *const ORKFitnessRestStepIdentifier = @"fitness.rest";
             ORKStepArrayAddStep(steps, stillStep);
         }
     }
-     */
     
     if (!(options & ORKPredefinedTaskOptionExcludeConclusion)) {
         ORKInstructionStep *step = [self makeCompletionStep];
@@ -1554,7 +1553,7 @@ NSString *const ORKSpeechRecognitionStepIdentifier = @"speech.recognition";
         }
     }
     
-    ORKSpeechRecognitionStep *step = [[ORKSpeechRecognitionStep alloc] initWithIdentifier: ORKSpeechRecognitionStepIdentifier image:speechRecognitionImage text:speechRecognitionText];
+    /* ORKSpeechRecognitionStep *step = [[ORKSpeechRecognitionStep alloc] initWithIdentifier: ORKSpeechRecognitionStepIdentifier image:speechRecognitionImage text:speechRecognitionText];
     ORKStreamingAudioRecorderConfiguration *config = [[ORKStreamingAudioRecorderConfiguration alloc] initWithIdentifier: ORKStreamingAudioRecorderIdentifier];
     step.title = ORKLocalizedString(@"SPEECH_TASK_TITLE", nil);
     step.shouldHideTranscript = shouldHideTranscript;
@@ -1562,7 +1561,7 @@ NSString *const ORKSpeechRecognitionStepIdentifier = @"speech.recognition";
     step.speechRecognizerLocale = speechRecognizerLocale;
     step.shouldContinueOnFinish = NO;
     
-    ORKStepArrayAddStep(steps, step);
+    ORKStepArrayAddStep(steps, step); */
     
     if (allowsEdittingTranscript) {
         ORKTextAnswerFormat *answerFormat = [ORKTextAnswerFormat new];
@@ -1641,7 +1640,7 @@ NSString *const ORKSpeechInNoiseStep2Identifier = @"speech.in.noise2";
     }
     
     {
-        ORKSpeechRecognitionStep *step = [[ORKSpeechRecognitionStep alloc] initWithIdentifier: ORKSpeechInNoiseStep2Identifier image:nil text:nil];
+        /* ORKSpeechRecognitionStep *step = [[ORKSpeechRecognitionStep alloc] initWithIdentifier: ORKSpeechInNoiseStep2Identifier image:nil text:nil];
         ORKStreamingAudioRecorderConfiguration *config = [[ORKStreamingAudioRecorderConfiguration alloc] initWithIdentifier: ORKStreamingAudioRecorderIdentifier];
         step.title = ORKLocalizedString(@"SPEECH_IN_NOISE_SPEAK_TITLE", nil);
         step.text = ORKLocalizedString(@"SPEECH_IN_NOISE_SPEAK_TEXT", nil);
@@ -1651,7 +1650,7 @@ NSString *const ORKSpeechInNoiseStep2Identifier = @"speech.in.noise2";
         step.shouldContinueOnFinish = NO;
         step.optional = YES;
         
-        ORKStepArrayAddStep(steps, step);
+        ORKStepArrayAddStep(steps, step); */
     }
     {
         ORKTextAnswerFormat *answerFormat = [ORKTextAnswerFormat new];

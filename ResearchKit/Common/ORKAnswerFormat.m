@@ -91,7 +91,7 @@ static NSNumberFormatterStyle ORKNumberFormattingStyleConvert(ORKNumberFormattin
 
 @implementation ORKAnswerDefaultSource {
     NSMutableDictionary *_unitsTable;
-} */
+}
 
 // @synthesize healthStore=_healthStore;
 
@@ -267,7 +267,7 @@ static NSNumberFormatterStyle ORKNumberFormattingStyleConvert(ORKNumberFormattin
     }
 } */
 
-// @end
+@end
 
 #endif
 

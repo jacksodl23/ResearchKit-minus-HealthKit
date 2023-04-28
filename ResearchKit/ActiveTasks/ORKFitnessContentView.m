@@ -74,7 +74,6 @@
     _duration = duration;
     [self setNeedsDisplay];
 }
- */
 
 - (void)setTimeLeft:(NSTimeInterval)timeLeft {
     _timeLeft = timeLeft;

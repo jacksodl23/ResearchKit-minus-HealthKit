@@ -30,7 +30,7 @@
 
 
 // @import AVFoundation;
-@import Accelerate;
+/* @import Accelerate;
 
 #import "ORKSpeechRecognitionStepViewController.h"
 
@@ -142,7 +142,7 @@
 }
 
 - (void)initializeRecognizer {
-    /* _speechRecognizer = [[ORKSpeechRecognizer alloc] init];
+    _speechRecognizer = [[ORKSpeechRecognizer alloc] init];
     
     if (_speechRecognizer) {
         [_speechRecognizer startRecognitionWithLocale:[NSLocale localeWithLocaleIdentifier:((ORKSpeechRecognitionStep *)self.step).speechRecognizerLocale] reportPartialResults:YES responseDelegate:self errorHandler:^(NSError *error) {
@@ -150,7 +150,7 @@
                 [self stopWithError:error];
             }
         }];
-    } */
+    }
 }
 
 - (void)recordButtonPressed:(id)sender {
@@ -241,10 +241,10 @@
     
     [_speechRecognitionContentView updateButtonStates];
     
-    /* if (_speechRecognizer)
+    if (_speechRecognizer)
     {
         [_speechRecognizer endAudio];
-    } */
+    }
     
     if (error)
     {
@@ -468,4 +468,4 @@
 }
 
 @end
-
+*/
